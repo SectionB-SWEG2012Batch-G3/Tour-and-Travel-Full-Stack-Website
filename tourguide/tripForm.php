@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4HF Tour and Travel|Create Trip Form</title>
     <link rel="stylesheet" href="../../fontawesome-free-5.15.4-web/css/all.css">
-    <script defer src = "CreatTripScript.js"></script>
-    <script defer src = "tripDataValidation.js"></script>
-    <link rel="stylesheet" href="tripCSS.css">
+    <script defer src = "js/CreatTripScript.js"></script>
+    <script defer src = "js/tripDataValidation.js"></script>
+    <link rel="stylesheet" href="css/tripCSS.css">
 </head>
 <style>
 .trip-form-container{
@@ -38,7 +38,7 @@
         transform: scaleX(1.4);
     }
 </style>
-<body style="background-image: url('bahirdar.jpg');">
+<body style="background-image: url('Profiles/bahirdar.jpg');">
     <section class = "trip-form-container">		
         <fieldset>
             <legend>Create trip form</legend>

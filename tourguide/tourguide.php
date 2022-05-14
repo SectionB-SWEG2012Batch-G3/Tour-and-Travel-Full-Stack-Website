@@ -297,7 +297,7 @@
             </article>
             <div class = "resrv-btn">
                 <div class="reserve" id="<?php echo $tourguide['name'].' '.$tourguide['lname']; ?>" title = "60">
-                    <a href="Profiles/tripForm.php">Assign My Tour Guide</a>
+                    <a href="tripForm.php">Assign My Tour Guide</a>
                 </div>
             </div>
         </div> 
