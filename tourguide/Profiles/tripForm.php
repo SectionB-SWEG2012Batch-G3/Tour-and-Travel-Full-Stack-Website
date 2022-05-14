@@ -16,29 +16,29 @@
     grid-template-columns: auto;   
 }
 
-.trip-form-container fieldset{
-    width: 300px;
-    background-color: rgba(0,0,0,0.5);
-}
+    .trip-form-container fieldset{
+        width: 300px;
+        background-color: rgba(0,0,0,0.5);
+    }
 
-.trip-form-container label{
-    width: 100%;
-    margin: 5px;
-}
+    .trip-form-container label{
+        width: 100%;
+        margin: 5px;
+    }
 
-.trip-form-container input:focus{
-    border:1px solid blue;
-    line-height: 25px;
-    transform: scaleX(1.2);
-}
+    .trip-form-container input:focus{
+        border:1px solid blue;
+        line-height: 25px;
+        transform: scaleX(1.2);
+    }
 
-#reset,#submit-btn{
-    display: inline;
-    margin-inline: 10px;
-    transform: scaleX(1.4);
-}
+    #reset,#submit-btn{
+        display: inline;
+        margin-inline: 10px;
+        transform: scaleX(1.4);
+    }
 </style>
-<body>
+<body style="background-image: url('bahirdar.jpg');">
     <section class = "trip-form-container">		
         <fieldset>
             <legend>Create trip form</legend>

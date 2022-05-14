@@ -15,14 +15,14 @@
         <meta name = "author" content = "4HF tour and travel agency">
         <meta name = "viewport" content = "width = device-width,initial-scale = 1.0">
         <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
-        <link rel="stylesheet" href="Profiles/profileCSS.css">
+        <link rel="stylesheet" href="css/profileCSS.css">
         <link rel="stylesheet" href="../css/footerCSS.css">
         <link rel="stylesheet" href="../css/navStyle.css">
         <link rel="stylesheet" href="../css/HomepageCss.css">
         <script defer src="../JS/NavScript.js"></script>
-        <script defer src = "Profiles/js.js"></script>
+        <script defer src = "js/js.js"></script>
         <script defer src = "../JS/search-boxScript.js" ></script>
-        <link rel="stylesheet" href="Profiles/style.css">
+        <link rel="stylesheet" href="css/style.css">
         <title>Haymnaot Demis</title>
         <style>
         a{
@@ -297,7 +297,7 @@
             </article>
             <div class = "resrv-btn">
                 <div class="reserve" id="<?php echo $tourguide['name'].' '.$tourguide['lname']; ?>" title = "60">
-                    <a href="Profiles/tripForm.html">Assign My Tour Guide</a>
+                    <a href="Profiles/tripForm.php">Assign My Tour Guide</a>
                 </div>
             </div>
         </div> 

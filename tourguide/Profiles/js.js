@@ -23,15 +23,13 @@ for(let i  in tempData2){
 const desc = document.querySelectorAll("a[class='guideDesc']");
 const tempData = document.querySelectorAll("div[class^='guy']");
 console.log(desc);
-console.log(tempData);
 
 
 for(let a in desc){
          desc[a].onclick = ()=>{
-            console.log("desc ", desc);
-            for(let i =0; i < tempData.length; i++){
-               console.log(i,tempData[i]);
-               tempData[i].classList.add("hiddens");
+            for(let i = 0; i < 5; i++){
+               console.log(tempData[i])
+                tempData[i].classList.add("hiddens");
             }
             tempData[a].classList.add("visibles");
             tempData[a].classList.remove("hiddens");
@@ -45,3 +43,48 @@ for(let a in desc){
          }
 }
 
+// for(let a in desc){
+//     desc[a].onclick = ()=>{
+//        switch(a){
+//            case 0: tempData1.classList.remove("hidden");
+//                    tempData1.classList.add("visible");
+//                    tempData2.classList.add("hidden");
+//                    tempData3.classList.add("hidden");
+//                    tempData4.classList.add("hidden");
+//                    tempData5.classList.add("hidden");
+//             break;
+//            case 1:
+//             tempData2.classList.remove("hidden");
+//             tempData2.classList.add("visible");
+//             tempData1.classList.add("hidden");
+//             tempData3.classList.add("hidden");
+//             tempData4.classList.add("hidden");
+//             tempData5.classList.add("hidden");
+//             break;
+//           case 2:
+//             tempData3.classList.remove("hidden");
+//             tempData3.classList.add("visible");
+//             tempData2.classList.add("hidden");
+//             tempData1.classList.add("hidden");
+//             tempData4.classList.add("hidden");
+//             tempData5.classList.add("hidden");
+//             break;
+//           case 3:
+//             tempData4.classList.remove("hidden");
+//             tempData4.classList.add("visible");
+//             tempData2.classList.add("hidden");
+//             tempData3.classList.add("hidden");
+//             tempData1.classList.add("hidden");
+//             tempData5.classList.add("hidden");
+//         break;
+//         case 4:
+//             tempData5.classList.remove("hidden");
+//             tempData5.classList.add("visible");
+//             tempData2.classList.add("hidden");
+//             tempData3.classList.add("hidden");
+//             tempData4.classList.add("hidden");
+//             tempData1.classList.add("hidden");
+//         break;
+//        }
+//     };
+// }
