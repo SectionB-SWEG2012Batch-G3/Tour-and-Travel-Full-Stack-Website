@@ -1,0 +1,29 @@
+
+.place{
+	background-color: #f1f1f1;
+	width: 100%;
+}
+
+.place h1{
+	text-align: center;
+}
+
+.flex-container
+{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: flex-start;
+	gap: 20px;
+}
+
+@media only screen and (max-width:900px) {
+	
+}
+
+@media only screen and (max-width:450px){
+	.flex-container .box img{
+		width:100%;
+	}
+}

@@ -1,0 +1,230 @@
+.logo{
+    margin: 30px 0px 0px 50px;
+    opacity:0.7;
+    display:inline;
+ }
+
+.top2{
+	position:relative;
+}
+a{
+	text-decoration:none;
+	color: blanchedalmond;
+}
+
+.search-bar-container{
+	display:inline;
+	position:absolute;
+	box-sizing: border-box;
+	top:30px;
+	right:260px;
+	border: var(--border);
+	border-radius: 40px;
+	background-color: rgb(247, 222, 222);
+	transition-duration: all 4s ease;
+	z-index: 2;
+}
+
+.autocom-box{
+    max-height: 280px;
+	clear: both;
+    overflow-y: auto;
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	width: 0;
+	display: none;
+}
+
+.autocom-box a{
+	list-style: none;
+	width: 100%;
+	cursor: pointer;
+	padding: 10px 12px;
+	border-radius: 3px;
+	color: black;
+	display: block;
+}
+
+.autocom-box a:hover{
+	background-color: rgb(143, 86, 86);
+}
+
+.search-icon{
+	border:none;
+	outline:none;
+	display: flex;
+	position: static;
+	width:40px;
+	height: 40px;
+	color: rgb(0, 0, 0);
+	justify-self:center;
+	align-items:center;
+	float: right;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+
+.searchBar{
+	background: none;
+	border:none;
+	float: left;
+	outline:none;
+	display: flex;
+	justify-self: flex-start;
+	line-height: 40px;
+	width:0px;
+	margin-bottom: 5px;
+	align-self: center;
+	font-size: 18px;
+}
+
+.search-bar-container:hover .searchBar, .autocom-box{
+	margin-left: 5px;
+	padding-left: 20px;
+	min-width:450px;
+}
+
+
+.search-bar-container.add .autocom-box{
+	display: block;
+}
+.search-bar-container.add .searchBar{
+	margin-left: 5px;
+	padding-left: 20px;
+	min-width:450px;
+}
+
+.login-container{
+	position: absolute;
+	right: 10px;
+	top: 40px;
+}
+
+
+button.login:hover, button.blogs:hover{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform:scale(1.02);
+	color: white;
+}
+button.login, button.blogs{
+	transition-duration: 0.5s;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+  	padding: 10px 10px;
+  	text-align: center;
+ 	display: inline-block;
+  	border-radius: 5px;
+	  height:30px;
+      margin: 10px;/*
+    display:inline; 
+	background-color:#00ff00; 
+	color:white;
+	height:30px;
+	border:1px solid blue; 
+	border-radius:20px;	
+	font-size:15px;*/
+}
+
+
+@media only screen and (max-width:965px) {
+	.top2 a{
+		display: block;
+	}
+	.top2{
+		display: grid;
+	}
+	.navigation{
+		text-align: left;
+	}
+	.nav{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.Experience{
+		display: none;
+	}
+	.logo,
+	.search-bar-container{
+		display: block;
+	}
+
+	.search-bar-container{
+		right: 0px;
+		top: 100px;
+	}
+
+	.top2{
+		margin-bottom: 60px;
+	}
+}
+
+
+
+@media only screen and (max-width:600px) {
+	.address-container{
+		flex-direction: column;
+		justify-content: center;
+	}
+	.logo{
+		display: block;
+		margin-bottom: 10px;
+	}
+	
+	
+	/*
+	.search-bar-container{
+		display: block;
+		width: 100%;
+		position: static;
+		clear: both;
+	}*/
+	.address-container label{
+		text-align: center;
+	}
+	.input-container , .autocom-box{
+		width: 100%;
+	}
+	.top2{
+		margin-bottom: 10px;
+	}
+	.search-bar-container{
+		position: static;
+		width: 95%;
+	}
+	.search-bar-container:hover .input-container input, .autocom-box{
+		min-width: 100%;
+	}
+	h1{
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	.input-container{
+		position: relative;
+	}
+	.input-container input{
+		width: 100%;
+		margin-left: 5px;
+		padding-left: 20px;
+	}
+	.search-icon{
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		text-align: center;
+	}
+}
+@media only screen and (max-width:450px) {
+	.login-container{
+		position: static;
+		float: right;
+	}
+	.login-container > *{
+		float: right;
+	}
+	
+}

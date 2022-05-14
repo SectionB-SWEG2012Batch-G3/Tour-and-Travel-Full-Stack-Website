@@ -1,0 +1,120 @@
+/*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*/
+footer{
+  /*  */
+    display: block;
+    background-color: #24262b;
+    padding: 70px 0;
+}
+.container{
+    max-width:85%;
+    margin: auto;  
+}
+.row{
+    display:flex;
+    flex-wrap: wrap;   
+    align-items:flex-start;
+    justify-content: space-between;
+}
+ul {
+    list-style:none;
+}
+.footer-items{
+    width:25%;
+    padding:0 30px;
+}
+
+.footer-items h4{
+    font-size:18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-items h4::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    width: 50px;
+    box-sizing: border-box;
+}
+.footer-items a{
+    color: #bbb;
+}
+
+.footer-items ul li,.footer-items ul li a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    display: block;
+    font-weight: 300;
+    color: #bbb;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+.footer-items ul li:hover{
+    transition: all 0.3s ease;
+    padding-left: 15px;
+    color: white;
+}
+.footer-items:not(:first-child){
+    color:#bbb;
+}
+
+.footer-items .socials a{
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+   /* padding: 10px;
+    text-align: center;*/
+    border-radius: 50%;
+    color: white;
+    line-height: 40px;
+    transition: all 0.5s ease;
+}
+.footer-items .socials a i{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.footer-items .socials a:hover{
+    background-color: white;
+    color: #24262b;
+}
+
+.copyright{
+    color: white;
+    position: relative;
+    bottom: -30px;
+}
+
+@media only screen and (max-width: 767px){
+    .footer-items{
+        width: 50%;
+    }
+    .footer-items ul li a{
+        display: block;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 560px){
+    .footer-items{
+        width: 100%;
+    }
+    .footer-items ul li a{
+        display: block;
+        width: 100%;
+    }
+}

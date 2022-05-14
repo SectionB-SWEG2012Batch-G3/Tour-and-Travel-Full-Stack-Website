@@ -1,0 +1,29 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.to-top.visible{
+	bottom: 32px;
+	pointer-events: auto;
+	opacity: 1;
+	}
+
+	.to-top{
+		background:  rgb(230, 8, 8);
+		position:fixed;
+		right:16px;
+		bottom:32px;
+		height:50px;
+		width:50px;
+		border-radius:50%;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		font-size:32px;
+		color:#1f1f1f;
+		text-decoration: none;
+		opacity:0; 
+		pointer-events: auto;
+		transition: all  0.4s;
+		z-index: 2;
+	}

@@ -1,0 +1,269 @@
+body{
+	background-color: white;
+  }
+h1{
+	color: green;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size: 70px;
+}
+
+
+img{
+	border-radius: 5px;
+    flex: none;
+    flex-wrap: wrap;
+}
+p{
+    position:absolute;
+    left: 10px;
+    bottom: 15px;
+    z-index: 2;
+	font-family: Arial, Helvetica, sans-serif;
+	color:green;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: center;
+	color: #FFFFFF;
+
+}
+a:link, a:visited{
+	font-family: Arial, Helvetica, sans-serif;
+	color:white;
+	font-size: 20px;
+
+}
+a:hover, a:active {
+  color:white;
+}
+
+.button{
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    z-index: 2;
+	background-color:  #4CAF50;
+	border: none;
+	color: white;
+  	padding: 10px 10px;
+  	text-align: center;
+ 	display: inline-block;
+  	border-radius: 5px;
+ }
+ .button:hover{
+ 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform:scale(1.02);
+ }
+ .button a{
+    text-decoration: none;
+ }
+.grid-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+.item a img{
+    position: relative;
+    height:300px;
+    width:500px;
+}
+
+.item1{
+	grid-column: 1;
+	grid-row: 1;
+	position: relative;
+	display: flex;
+
+}
+
+.item2{
+	grid-column: 2;
+	grid-row: 1;
+	position: relative;
+	display: flex;
+}
+
+.item3{
+	grid-column: 3;
+	grid-row: 1;
+	position: relative;
+	display: flex;
+}
+
+.item4{
+	grid-column: 1;
+	grid-row: 2;
+	position: relative;
+	display: flex;
+}
+
+.item5{
+	grid-column: 2;
+	grid-row: 2;
+	position: relative;
+	display: flex;
+}
+
+.item6{
+	grid-column: 3;
+	grid-row: 2;
+	position: relative;
+	display: flex;
+}
+
+.item7{
+	grid-column: 1;
+	grid-row:3;
+	position: relative;
+	display: inline-block;
+}
+
+.item8{
+	grid-column: 2;
+	grid-row: 3;
+	position: relative;
+	display: flex;
+}
+
+.item9{
+	grid-column: 3;
+	grid-row: 3;
+	position: relative;
+	display: flex;
+}
+
+.item1 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item2 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item3 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item4 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item5 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item6 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item7 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item8 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+.item9 p{
+
+        position: absolute;
+        margin-left:10px;
+        left: 0;
+        right: 0;
+        top: 70%; 
+        text-align:left;
+        width: 100%; 
+    }
+
+    @media only screen and  (max-width: 530px){
+        .item,.item a img{
+            width: 100%;
+        }
+        p{
+            font-size: 20px;
+        }
+
+        .item a img{
+            height: 100%;
+        }
+
+    }
+
+    .to-top.visible{
+    bottom: 32px;
+    pointer-events: auto;
+    opacity: 1;
+    }
+
+    .to-top{
+        background: darkslategrey;
+        position:fixed;
+        right:16px;
+        bottom:32px;
+        height:50px;
+        width:50px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:32px;
+        color:#1f1f1f;
+        text-decoration: none;
+        opacity:0; 
+        pointer-events: auto;
+        transition: all  0.4s;
+        z-index: 2;
+    }
+
+
+

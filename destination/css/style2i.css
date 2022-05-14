@@ -1,0 +1,136 @@
+body{
+	background-color: white;
+  }
+
+h1{
+	color: green;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size: 50px;
+}
+
+h3{
+	color: green;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:15%;
+	font-size: 20px;
+}
+h2{
+	color:green;
+}
+a:link, a:visited{
+	font-family: Arial, Helvetica, sans-serif;
+	color:white;
+}
+a:hover, a:active {
+  color:white;
+}
+.desc{
+	font-family: Arial, Helvetica, sans-serif;
+	width: 80%;
+	margin-left: 10%;
+}
+.disc{
+	width: 80%;
+	margin-left: 5%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.disc ul{
+	list-style: square;
+}
+
+.disc ul li{
+	line-height: 30px;
+}
+.disc ul li:hover + img{
+	visibility: visible;
+}
+
+.disc div{
+	position: relative;
+}
+
+.disc ul img{
+	position: absolute;
+	visibility: hidden;
+	z-index: 1;
+}
+.image{
+	display: block;
+	width:100%;
+	margin: 30px auto 30px auto;
+}
+.image img{
+	width: 100%;
+	height: 100vh;
+}
+.image img:hover{
+     transform:scale(1.02);
+}
+#gmap_canvas{
+	width: 700px;
+	height: 700px;
+	display:block;
+	margin-left: auto;
+	margin-right:auto;
+	text-align: center;
+}
+.mapouter{
+	position:relative;
+	text-align:center;
+	width:100%;
+	margin-bottom: 30px;
+}
+.gmap_canvas {
+	text-align: center;
+	overflow:hidden;
+	background:none!important;
+	width:100%;
+}
+ul{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 15%;
+}
+ol{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 15%;
+}
+
+.top-container{
+	width: 90%;
+}
+
+		ul{
+			list-style: square;
+			margin-left: 5%;
+		}
+		.to-top.visible{
+	bottom: 32px;
+	pointer-events: auto;
+	opacity: 1;
+	}
+
+	.to-top{
+		background: darkslategrey;
+		position:fixed;
+		right:16px;
+		bottom:32px;
+		height:50px;
+		width:50px;
+		border-radius:50%;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		font-size:32px;
+		color:#1f1f1f;
+		text-decoration: none;
+		opacity:0; 
+		pointer-events: auto;
+		transition: all  0.4s;
+		z-index: 2;
+	}
+	

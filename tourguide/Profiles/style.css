@@ -1,0 +1,34 @@
+.top{
+    margin-bottom: 30px;
+}
+@media only screen and (max-width:965px) {
+	.top a{
+		display: block;
+	}
+	.top{
+		display: grid;
+	}
+	.navigation{
+		text-align: left;
+	}
+	.nav{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.Experience{
+		display: none;
+	}
+	.logo,
+	.search-bar-container{
+		display: block;
+	}
+
+	.search-bar-container{
+		right: 0px;
+		top: 100px;
+	}
+
+	.top{
+		margin-bottom: 60px;
+	}
+}

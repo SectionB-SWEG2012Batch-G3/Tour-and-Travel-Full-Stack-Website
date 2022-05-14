@@ -1,0 +1,226 @@
+nav *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bold;
+}
+
+nav{
+   background-color: green;
+   margin-block: 20px;
+}
+
+nav::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+nav ul{
+    float: right;
+    list-style: none;
+    margin-right: 50px;
+    position: relative;
+}
+nav ul li{
+    float:left;
+    display: inline-block;
+    background-color: green;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    line-height: 80px;
+    font-size: 20px;
+    padding: 8px 20px;
+}
+
+nav ul li a:hover{
+    box-shadow: 0 0 5px #33ffff,0 0 5px #33ffff;
+    border-radius: 5px;
+    color: cyan;
+}
+
+nav ul ul{
+    position: absolute;
+    top: 100px;
+    border-top: 3px solid cyan;
+    visibility: hidden;
+    transition: top 0.3s;
+    z-index: 2;
+}
+
+nav ul li:hover > ul{
+    top:80px;
+    visibility:visible;
+}
+
+nav ul ul li{
+    position: relative;
+    margin: 0px;
+    width: 300px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid black;
+} 
+
+nav ul ul li a{
+    line-height: 60px;
+}
+
+nav ul ul ul{
+    border-top: none;    
+}
+
+nav ul ul ul li{
+    position: relative;
+    border-radius: 5px;
+    background-color: rgb(3, 145, 3);
+    top: -80px;
+    left: 300px;
+}
+
+.show,.fa-bars-label,input{
+    display: none;
+}
+
+
+@media only screen and (max-width:1106px){
+    nav ul li.About-us{
+        display: none;
+    }
+
+    nav ul li a{
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width:1033px){
+    nav ul li.Experience{
+        display: none;
+    }
+    nav ul li a{
+        font-size: 23px;
+    }
+}
+
+@media only screen and (max-width:903px){
+    nav ul li.tour-guide{
+        display: none;
+    }
+
+    nav ul li a{
+        font-size: 24px;
+    }
+    
+}
+
+@media all and (max-width:760px){
+
+    nav ul{
+        margin-right: 0px;
+        float: left;
+    }
+
+    nav ul li, nav ul ul li{
+        display: block;
+        width: 100%;
+    }
+
+    nav ul li.About-us{
+        display: block;
+    }
+
+    nav ul li.Experience{
+        display: block;
+    }
+
+
+    nav ul li.tour-guide{
+        display: block;
+    }
+
+    nav ul li a{
+        font-size: 20px;
+    }
+
+    nav ul ul{
+        position: static;
+        top:80px;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .show:hover{
+        color: cyan;
+        box-shadow: 0 0 5px #33ffff,0 0 5px #33ffff;
+        border-radius: 5px;
+    }
+
+    nav ul li a:hover{
+       /* box-shadow: none;*/
+    }
+    .show{
+        display: block;
+        font-size: 20px;
+        box-sizing: content-box;
+        margin-bottom: 5px;
+        width: 100px;
+        padding: 0px 20px;
+        line-height: 60px;
+        cursor: pointer;
+    }
+
+    nav ul ul li a{
+        position: static;
+        margin-left: 50px;
+        line-height: 60px;
+    }
+
+    nav ul ul ul{
+        position: absolute;
+        display: none;
+        left:-150px;
+        top: 100px;
+        z-index: 2;
+    }
+
+    nav ul ul li{
+        width: 210px;
+    }
+
+    .fa-bars-label{
+        display: block;
+        color:white;
+        float: right;
+        line-height: 80px;
+        font-size: 25px;
+        position: relative;
+        right: 50px;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .show + a,ul{
+        display: none;
+    }
+    input[id$="label"]:checked + ul{
+        display: block;
+    }
+
+   /* input[id=".fa-bars-label"]:checked{
+
+    }*/
+    nav{
+        line-height: 80px;
+    }
+
+}
+
+
+

@@ -1,0 +1,252 @@
+.guide-container{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:10px;
+    margin: 10px;
+}
+.guide{
+    width: 24%;
+    height: auto;
+    padding: 5px;
+}
+.guide a img{
+    width:100%;
+    height: 250px;
+    border-radius: 10px;
+    transition: all 1.5s ease;
+}
+
+.guide a img:hover{
+    box-shadow: 5px 5px 50px black,-5px -5px 50px black;
+    transform: scale(1.1);
+}
+
+.guide:after{
+    content: "";
+    position:relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    left:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.guide .guideDesc{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 5px;
+    color: blueviolet;
+}
+
+article{
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    gap: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.vidcontain{
+    padding: 10px;
+    width: 500px;
+    flex-grow: 2;
+    align-self:flex-start;
+}
+
+article .imag{
+    padding-right: 10px;
+    width: 300px;
+    margin: 10px;
+}
+article .imag figcaption{
+    text-align: center;
+    color: darkviolet;
+    font-size: 1.3rem;
+    font-family: monospace;
+}
+article .imag img{
+    border-radius: 15px;
+    box-shadow: 8px 8px 10px rgb(59, 56, 56), -8px -8px 10px rgb(48, 40, 40);
+}
+
+article .profile{
+    width: 350px;
+    margin: 5px;
+}
+
+.profile table{
+    border-collapse: collapse;
+    border: 2px solid rgb(30, 8, 233);
+    margin-bottom: 10px;
+    box-shadow: 8px 8px 60px rgb(153, 118, 118), -8px -8px 60px rgb(199, 178, 178);
+}
+
+.profile td,th{
+    font-size: 1rem;
+    padding: 7px;
+    border: 2px solid rgb(30, 8, 233);
+}
+
+.profile td{
+    background-color: aqua;
+    color:darkviolet;
+}
+
+.profile th{
+    background-color: rgb(99, 180, 17);
+    color: white;
+}
+
+.profile div{
+    font-size: 1.2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.trip-form-container{
+    width: 60%;
+    transform: translateX(35%);
+    display: grid;
+    grid-template-columns: auto;
+    
+}
+
+.trip-form-container fieldset{
+    width: 300px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.trip-form-container label{
+    width: 100%;
+    margin: 5px;
+    line-height: 25px;
+}
+
+.trip-form-container input{
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    border: 1px solid hotpink;
+    color: black;
+    padding: 4px;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.trip-form-container input:focus{
+    border:1px solid blue;
+    line-height: 25px;
+    transform: scaleX(1.2);
+}
+
+#reset,#submit-btn{
+    display: inline;
+    margin-inline: 10px;
+    transform: scaleX(1.4);
+}
+.resrv-btn{
+    display: block;
+    margin-left: 20px;
+}
+.reserve a{
+    font-size: 25px;
+    color: black;
+}
+.reserve{
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+  	padding: 10px 10px;
+  	text-align: center;
+ 	display: inline-block;
+  	border-radius: 5px;
+ }
+ .reserve:hover{
+ 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform:scale(1.02);
+ }
+
+/*
+.trip-form-container{
+        display: flex;
+        justify-content: center;
+}
+
+.trip-form-container input{
+    box-sizing: border-box;
+    display: block;
+    padding: 4px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.trip-form-container{
+    width: 100%;
+}
+
+.trip-form-container label{
+    width: 100%;
+    margin: 5px;
+    line-height: 25px;
+}
+
+.trip-form-container form{
+    max-width:50%;
+}
+*/
+@media only screen and (max-width:1000px){
+    .guide{
+        width: 32.5%;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .guide{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width:530px){
+    .guide{
+        width: 85%;
+    }
+    .trip-form-container{
+        transform: translateX(50px);
+        width: 100%;
+    }
+    .trip-form-container fieldset{
+        width: 100%;
+    }
+
+    .trip-form-container input{
+        width: 80%;
+    }
+    .trip-form-container input#submit-btn{
+        margin-inline: 10px;
+        display: block;
+        width: 100px;
+    }
+    .trip-form-container input#reset{
+        width: 100px;
+    }
+    #form1{
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-width:330px){
+     header,main,footer{
+        position: initial;
+        display:block;
+    }
+
+}
