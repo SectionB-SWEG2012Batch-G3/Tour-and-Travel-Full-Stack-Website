@@ -81,7 +81,7 @@ try{
         }
         
         if(!empty($_FILES['photo']['name'])){
-            $target_file = 'images/'.randomString(8).'/'.$_FILES['photo']['name'];
+            $target_file = 'images/'.$fname.'_'.$lname.randomString(8).'/'.$_FILES['photo']['name'];
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
            if(getimagesize($_FILES['photo']['tmp_name']) !== false){
                 if($_FILES['photo']['size'] <= 2000000 ){

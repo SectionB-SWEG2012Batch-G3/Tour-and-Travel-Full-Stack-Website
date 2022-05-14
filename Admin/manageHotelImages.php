@@ -61,7 +61,7 @@
                 mkdir('uploads/images/');
             }
             foreach($image_names as $i => $name){
-                $target_file = 'uploads/images/'.randomString(8).'/'.$name;
+                $target_file = 'uploads/images/'.$title.randomString(8).'/'.$name;
                 // echo '<br/>'.$target_file.'<br/>';
                 $isCreated = mkdir(dirname($target_file));
                 // echo '<br/>'.$isCreated.'<br/>';
@@ -73,7 +73,7 @@
                 $query->execute();
             }
 
-            header("Location: manageHotelImages.php?active=destination");           
+            // header("Location: manageHotelImages.php?active=destination");           
         }
     }
 

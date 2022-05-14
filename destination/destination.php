@@ -166,7 +166,7 @@
 </nav>
 </header>
 	<main>
-		<h1> Friendship Park</h1>
+		<h1><?php echo $place['title']?></h1>
 		<div class="slideContainer">
 
 			<div class="slider">

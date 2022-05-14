@@ -7,7 +7,7 @@
         echo '<br/>'.$regionName.'<br/>'.$hotelName.'<br/>'.$rating.'<br/>'.$minPrice.'<br/>'.$image['name'].'<br/>'.$maxPrice.'<br/>'.$rating.'<br/>';
     
         if(!empty($image)){
-            $imagePath = 'uploads/images/'.randomString(8).'/'.$image['name'];
+            $imagePath = 'uploads/images/'.$hotelName.randomString(8).'/'.$image['name'];
         }else{
             array_push($errors,'Image is not choosen');
         }

@@ -9,7 +9,7 @@
             $imagePath = $image ? '' : $imagePath;
         echo '<br/>'.$regionName.'<br/>'.$desc.'<br/>'.$link.'<br/>'.$image['name'].'<br/>'.$vid.'<br/>';
         if(!empty($image)){
-            $imagePath = 'uploads/images/'.randomString(8).'/'.$image['name'];
+            $imagePath = 'uploads/images/'.$regionName.randomString(8).'/'.$image['name'];
         }else{
             array_push($errors,'Image is not choosen');
         }
@@ -21,7 +21,7 @@
             }
             $isCreated =  mkdir(dirname($imagePath));
            // mkdir(dirname('uploads/images/'.randomString(8).'/'.$image['name']));
-            echo $isCreated;
+            echo dirname($imagePath);
             move_uploaded_file($image['tmp_name'],$imagePath);
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':name',$regionName);
@@ -31,7 +31,7 @@
             $stmt->bindParam(':vid',$vid);
 
             $stmt->execute();
-            header('Location: destinations.php?active=destination');
+            //header('Location: destinations.php?active=destination');
         }
     }
     include_once 'destPartials/form.php';

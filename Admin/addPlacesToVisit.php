@@ -67,7 +67,7 @@ try{
             $sql2 = 'INSERT INTO image(path,description,imageFor) VALUES(:path,:desc,:for)';
             
             foreach($image_names as $i => $name){
-                $target_file = 'uploads/images/'.randomString(8).'/'.$name;
+                $target_file = 'uploads/images/'.$placeName.randomString(8).'/'.$name;
                 // echo '<br/>'.$target_file.'<br/>';
                 $isCreated = mkdir(dirname($target_file));
                 // echo '<br/>'.$isCreated.'<br/>';
