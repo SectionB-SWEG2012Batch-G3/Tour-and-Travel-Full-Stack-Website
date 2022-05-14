@@ -14,6 +14,7 @@
             }
             if(!empty($image['name'])){
                 unlink($oldPath);
+                rmdir(dirname($oldPath));
                 $isCreated =  mkdir(dirname($imagePath));
             // mkdir(dirname('uploads/images/'.randomString(8).'/'.$image['name']));
                 echo $isCreated;

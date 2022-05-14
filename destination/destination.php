@@ -173,7 +173,7 @@
                 <?php if(!empty($images)):?>
 					<?php foreach($images as $i => $image):?>
 						<div class="slide <?php if($i === 0) echo 'active'?>">
-							<img src="../Admin/<?php echo $image['path']?>" alt="<?php echo $place['title']?>" >
+							<img src="../Admin/<?php echo $image['path'] ?? ''?>" alt="<?php echo $place['title']?>" >
 							<div class="info">
 								<h2><?php echo $place['title']?></h2>
 								<p><?php echo $image['description']?></p>

@@ -34,5 +34,5 @@
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id'=>$id]);
-    //header('Location: hotels.php?active=hotel');
+    header('Location: hotels.php?active=hotel');
 ?>

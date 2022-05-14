@@ -42,5 +42,5 @@
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id'=>$id]);
-   // header('Location: destinations.php?active=destination');
+    header('Location: destinations.php?active=destination');
 ?>

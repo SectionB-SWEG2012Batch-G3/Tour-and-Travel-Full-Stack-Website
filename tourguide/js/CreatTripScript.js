@@ -25,39 +25,6 @@ var tourGuidesDB = tourGuidesDB = JSON.parse(localStorage.getItem("tourGuidesDB"
 
 //localStorage.setItem("tourGuidesDB",JSON.stringify(tourGuidesDB));
 
-submitBtn.onclick = (e) =>{
-    const tourist = 
-        {FullName:`${name.value.trim()}`,
-        place:`${place.value.trim()}`,
-        phone:`${phone.value.trim()}`,
-        email:`${email.value.trim()}`,
-        guide:`${guide.value.trim()}`,
-        stDate:`${stDate.value.trim()}`,
-        enDate:`${enDate.value.trim()}`,
-        cardNum:`${cardNumber.value.trim()}`,
-        perhour:`${perHour.value.trim()}`,
-        price:`${price.value.trim()}`
-        };
-    console.log(tourist);
-    e.preventDefault();
-    validateUsername();
-    validateCreditCard();
-    validatePhone();
-    validateEmail();
-    validateDate();
-    console.log(phone.value,email.value,name.value,stDate.value.trim());
-    if(validateUsername() && validateCreditCard() && validateDate() && validatePhone() && validateEmail()){
-        if(checkDate(stDate.value,enDate.value,guide.value)){
-            tourGuidesDB.push(tourist);
-            localStorage.setItem("tourGuidesDB",JSON.stringify(tourGuidesDB));
-            alert("Thank you we will send a verification mesasge to your email");
-        }else{
-
-        }
-    }else{
-        
-    }
-};
 
 function checkDate(stDate,enDate,name){
     if(!JSON.parse(localStorage.getItem("tourGuidesDB"))){

@@ -21,7 +21,7 @@
             if(!empty($image['name'])){
                 echo '<br/> old path '.$oldPath.'<br/>';
                 unlink($oldPath);
-                rmdir($oldPath);
+                rmdir(dirname($oldPath));
                 $isCreated =  mkdir(dirname($imagePath));
             // mkdir(dirname('uploads/images/'.randomString(8).'/'.$image['name']));
                 echo '<br/>'.$isCreated.'<br/>';
