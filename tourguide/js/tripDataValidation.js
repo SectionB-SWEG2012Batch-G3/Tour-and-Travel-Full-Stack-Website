@@ -1,18 +1,5 @@
-/*const submitBtn = document.querySelector("input[id='submit']");
-const username =  document.getElementById("username");
-const password = document.getElementById("password");
-const phone = document.getElementById("tele");
-const confirmP = document.getElementById("confirm");
-const email = document.getElementById("email");
 const eye = document.querySelector(".fa-eye");
 const eye2 =document.querySelector(".fa-eye-slash");
-const pass = document.querySelector("input[id='password']");
-const eye3 = document.querySelector(".eye3")
-const eye4 = document.querySelector(".eye4");
-const conf = document.querySelector("input[id='confirm']");*/
-const eye = document.querySelector(".fa-eye");
-const eye2 =document.querySelector(".fa-eye-slash");
-//const cardNumber = document.getElementById("credit-card");
 function setError(elme,message){
     const div = elme.parentNode;
     const small = div.querySelector("small");

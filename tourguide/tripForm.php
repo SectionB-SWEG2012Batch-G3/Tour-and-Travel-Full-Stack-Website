@@ -1,3 +1,14 @@
+<?php
+    include_once '../dbconfig/connection.php';
+    $name = '';
+    if(isset($_GET['name'])){
+        $name = $_GET['name'];
+    }
+    $stmt = $pdo->prepare("SELECT * FROM tourguide");
+    $stmt->execute();
+    $tourguides = $stmt->fetchAll();
+    include_once 'saveAssignedTourGuides.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,14 +85,16 @@
                 <div class="input-container">
                     <label for="guides">Tour Guide Name</label><br>
                     <select name="guides" id="guides">
-                        <option value="Haymanot Demis">Haymanot Demis</option>
-                        <option value="Fuad Miftah">Fuad Miftah</option>
-                        <option value="Hana Chane">Hana Chane</option>
-                        <option value="Hamere Endale">Hamere Endale</option>
-                        <option value="Haileamlak Desalegn">Haileamlak Desalegn</option>
-                        <option value="Henok Kefale">Henok Kefale</option>
-                        <option value="Hiwot Birhanu">Hiwot Birhanu</option>
-                        <option value="Natnael Girma">Natnael Girma</option>
+                        <?php if(!empty($tourguides)):?>
+                            <?php foreach($tourguides as $i => $tourguide):?>
+                                <option value="<?php echo $tourguide['name']?>" <?php if($name === $tourguide['name']) echo 'selected'?>>
+                                    <?php 
+                                        echo $tourguide['name'];
+                                    ?> Chane 
+                                </option>
+                            <?php endforeach?>
+                        <?php endif?>
+                       
                     </select>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
@@ -111,7 +124,7 @@
                     <small></small>
                 </div>
                 <div class="input-container">
-                    <label for="perhour">Price/Hr.</label>
+                    <label for="perhour" >Price/Hr.</label>
                     <input type="text" id= "perhour" disabled>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
@@ -130,6 +143,6 @@
             </form>
             </fieldset>
 </section>
-
+<?php include_once 'partials/frontEndValidation.php';?>
 </body>
 </html>

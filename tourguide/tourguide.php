@@ -296,8 +296,8 @@
                     </div>
             </article>
             <div class = "resrv-btn">
-                <div class="reserve" id="<?php echo $tourguide['name'].' '.$tourguide['lname']; ?>" title = "60">
-                    <a href="tripForm.php">Assign My Tour Guide</a>
+                <div class="reserve" id="<?php echo $tourguide['name'].' '.$tourguide['lname']; ?>" title = "<?php echo $tourguide['salaryPerHour']; ?>">
+                    <a href="tripForm.php?name=<?php echo $tourguide['name']?>">Assign My Tour Guide</a>
                 </div>
             </div>
         </div> 
