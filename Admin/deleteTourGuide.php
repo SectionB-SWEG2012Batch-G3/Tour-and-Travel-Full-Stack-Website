@@ -16,4 +16,3 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id'=>$id]);
     header('Location: tourguides.php?active=tourguide');
-?>

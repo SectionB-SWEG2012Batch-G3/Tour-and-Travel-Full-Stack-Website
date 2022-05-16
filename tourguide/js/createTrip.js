@@ -6,6 +6,7 @@ const stDate = document.getElementById("St-Date");
 const guide = document.getElementById("guides");
 const enDate = document.getElementById("En-Date");
 const perHour = document.getElementById("perhour");
+console.log("price ", perHour.value);
 const price = document.getElementById("price");
 const cardNumber = document.getElementById("credit-card");
 const submitBtn = document.getElementById("submit-btn");
@@ -18,12 +19,10 @@ const reset = document.getElementById("reset");
 var tourGuidesDB = (tourGuidesDB = JSON.parse(
         localStorage.getItem("tourGuidesDB")
     ) ?
-    (tourGuidesDB = JSON.parse(localStorage.getItem("tourGuidesDB"))) :
-    []);
+    (tourGuidesDB = JSON.parse(localStorage.getItem("tourGuidesDB"))) : []);
 //const passengers = [{FullName:"name",place:"Somewhere",phone:"56234",email:"ASDf@afa",guide:"name",stDate:"date",enDate:"jsaf",cardNum:2345,price:223}];
-
 //localStorage.setItem("tourGuidesDB",JSON.stringify(tourGuidesDB));
-var selectedGuidePrice = 0;
+
 submitBtn.onclick = (e) => {
     const tourist = {
         FullName: `${name.value.trim()}`,

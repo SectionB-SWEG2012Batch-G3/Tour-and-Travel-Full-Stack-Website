@@ -1,3 +1,11 @@
+<?php
+echo $_SERVER['SERVER_NAME'];
+echo $_SERVER['PHP_SELF'];
+echo $_SERVER['SCRIPT_NAME'];
+var_dump($_GET);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

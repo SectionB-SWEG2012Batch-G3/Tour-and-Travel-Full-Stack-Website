@@ -1,31 +1,33 @@
-body{
-    background-position:center;
+body {
+    background-position: center;
     background-size: cover;
 }
 
-.trip-form-container{
+.trip-form-container {
     position: absolute;
-    left: 50%;
+    left: 40%;
     top: 45%;
     width: 370px;
-    background-color: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.8));
-    transform: translate(-50%,-45%);
+    background-color: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+    transform: translate(-50%, -45%);
     color: white;
     border-radius: 20px;
 }
 
-.trip-form-container fieldset{
+.trip-form-container fieldset {
     border: none;
     padding: 0px 30px;
     border-radius: 20px;
     box-shadow: 7px 7px 60px black;
 }
 
-.trip-form-container label{
+.trip-form-container label {
     line-height: 30px;
     font-size: 1.4rem;
 }
-.trip-form-container input,#guides{
+
+.trip-form-container input,
+#guides {
     width: 80%;
     box-sizing: border-box;
     display: block;
@@ -35,8 +37,9 @@ body{
     padding: 4px;
     border-radius: 15px;
     margin-left: 10px;
-    
 }
+
+
 /*
 .trip-form-container input{
     height:25px;
@@ -49,36 +52,38 @@ body{
     border-radius: 5px;
 }
 */
-input:focus{
+
+input:focus {
     transition: 0.1s;
-    border:3px solid rgb(19, 230, 19);
+    border: 3px solid rgb(19, 230, 19);
 }
 
-input[type="submit"],input[type="reset"]{
+input[type="submit"],
+input[type="reset"] {
     width: 25%;
     margin: 10px;
     background-color: blueviolet;
-    border:2px solid rgb(0, 204, 255);
+    border: 2px solid rgb(0, 204, 255);
     color: white;
     cursor: pointer;
 }
 
-.trip-form-container .input-container{
-    position: relative;   
+.trip-form-container .input-container {
+    position: relative;
 }
-.input-container i{
+
+.input-container i {
     position: absolute;
-    top:35px;
+    top: 35px;
     right: 60px;
     color: black;
     visibility: hidden;
 }
 
-
-.input-container small{
+.input-container small {
     background-color: cornsilk;
     position: relative;
-    width:fit-content;
+    width: fit-content;
     margin-top: 3px;
     margin-left: 13px;
     padding-left: 5px;
@@ -86,37 +91,37 @@ input[type="submit"],input[type="reset"]{
     display: block;
     visibility: hidden;
 }
-.input-container.success input{
-    border:2px solid #3ecc71;
+
+.input-container.success input {
+    border: 2px solid #3ecc71;
 }
 
-.input-container.success i.fa-check-circle{
+.input-container.success i.fa-check-circle {
     visibility: visible;
     color: #3ecc71;
 }
 
-.input-container.error input{
-    border:2px solid #e74c3c;
+.input-container.error input {
+    border: 2px solid #e74c3c;
 }
 
-.input-container.error small{
+.input-container.error small {
     visibility: visible;
     color: red;
-} 
+}
 
-.input-container.error i.fa-exclamation-circle{
+.input-container.error i.fa-exclamation-circle {
     visibility: visible;
     color: #e74c3c;
 }
 
-.input-container i#on{
-    visibility:visible;
+.input-container i#on {
+    visibility: visible;
     right: 75px;
-    cursor:auto;
+    cursor: auto;
 }
 
-.input-container i#off{
-    visibility:hidden;
+.input-container i#off {
+    visibility: hidden;
     right: 75px;
 }
-
