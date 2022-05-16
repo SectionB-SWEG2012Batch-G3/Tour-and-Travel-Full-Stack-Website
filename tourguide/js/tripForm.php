@@ -30,6 +30,7 @@ $enDateErr = [];
 $perHourErr = [];
 $priceErr = [];
 $cardNumErr = [];
+$scheduleErr = '';
 $errors = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,6 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("SELECT * FROM tourguide");
     $stmt->execute();
     $guides = $stmt->fetchAll();
+
+    #fetching all tourguides schedules data from asigned_tourguide DB
+    $stmt = $pdo->prepare("SELECT * FROM assigned_tourguide");
+    $stmt->execute();
+    $schedules = $stmt->fetchAll();
     #setting time zone
     date_default_timezone_set('Africa/Nairobi');
 
@@ -155,14 +161,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stDate > $enDate) {
         $stDateErr[] = 'Start date must be earlier than the end date';
         $enDateErr[] = 'End date must be earlier than the end date';
+        $errors = true;
     }
 
     if ($stDate < time()) {
         $stDateErr[] = 'This time has been passed';
+        $errors = true;
     }
 
     if ($enDate < time()) {
         $enDateErr[] = 'This time has been passed';
+        $errors = true;
     }
 
     //calculating the total price
@@ -173,20 +182,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<br/>' . 'days ' . $totalDays . '<br/>';
         $price = $totalDays * $pricePerH;
     }
-    #fetching all tourguides schedules data from asigned_tourguide DB
-    $stmt = $pdo->prepare("SELECT * FROM assigned_tourguide");
-    $stmt->execute();
-    $schedules = $stmt->fetchAll();
-    $scheduleErr = '';
-    $startDate = date('Y-m-d H:i:s', $stDate);
-    $endDate = date('Y-m-d H:i:s', $enDate);
+    $stDate = date('Y-m-d H:i:s', $stDate);
+    $enDate = date('Y-m-d H:i:s', $enDate);
+
 
     foreach ($schedules as $i => $schedule) {
         if ($guideName == $schedule['guide_name']) {
-            if (($startDate >= $schedule['start_date'] && $endDate <= $schedule['end_date']) ||
-                ($startDate <= $schedule['start_date'] && $endDate >= $schedule['end_date']) ||
-                ($startDate >= $schedule['start_date'] && $startDate <= $schedule['end_date']) ||
-                ($endDate <= $schedule['end_date'] && $endDate >= $schedule['start_date'])
+            if (($stDate >= $schedule['start_date'] && $enDate <= $schedule['end_date']) ||
+                ($stDate <= $schedule['start_date'] && $enDate >= $schedule['end_date']) ||
+                ($stDate >= $schedule['start_date'] && $stDate <= $schedule['end_date']) ||
+                ($enDate <= $schedule['end_date'] && $enDate >= $schedule['start_date'])
             ) {
                 $scheduleErr = "$guideName has a schedule between " . $schedule['start_date'] . " and " . $schedule['end_date'] . ", please selece another days.";
                 $stDateErr[] = 'Scheduled Date please chenge it';
@@ -197,37 +202,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    echo '<br/>' . 'Year ' . date('Y') . '<br/>';
-    echo 'month ' . date('m') . '<br/>';
-    echo 'Day of the month ' . date('d') . '<br/>';
-    echo 'Day of the week ' . date('l') . '<br/>';
-    echo 'hour(24) ' . date('H') . '<br/>';
-    echo 'hour(12) ' . date('ha') . '<br/>';
-    echo 'minute ' . date('i') . '<br/>';
-    echo 'seconds ' . date('s') . '<br/>';
-    echo '<br/>' . $name . '<br/>' . $place . '<br/>' . $tele . '<br/>' . $email . '<br/>' . $guideName . '<br/>' . $pricePerH . '<br/>' . $price . '<br/>' . $cardNum . '<br/>' . date('Y-m-d H:i:s', $stDate) . '<br/>' . date('Y-m-d H:i:s', $enDate) . '<br/>';
 
-    echo "errors<br/>";
-    // var_dump($errors);
-    echo '<br/>';
-    var_dump($nameErr);
-    echo '<br/>';
-    var_dump($placeErr) . '<br/>';
-    echo '<br/>';
-    var_dump($teleErr) . '<br/>';
-    echo '<br/>';
-    var_dump($emailErr) . '<br/>';
-    echo '<br/>';
-    var_dump($guideNameErr) . '<br/>';
-    echo '<br/>';
-    var_dump($perHourErr) . '<br/>';
-    echo '<br/>';
-    var_dump($stDateErr) . '<br/>';
-    echo '<br/>';
-    var_dump($priceErr) . '<br/>' . var_dump($cardNumErr) . '<br/>';
 
+    // echo '<br/>' . 'Year ' . date('Y') . '<br/>';
+    // echo 'month ' . date('m') . '<br/>';
+    // echo 'Day of the month ' . date('d') . '<br/>';
+    // echo 'Day of the week ' . date('l') . '<br/>';
+    // echo 'hour(24) ' . date('H') . '<br/>';
+    // echo 'hour(12) ' . date('ha') . '<br/>';
+    // echo 'minute ' . date('i') . '<br/>';
+    // echo 'seconds ' . date('s') . '<br/>';
+    // echo '<br/>' . $name . '<br/>' . $place . '<br/>' . $tele . '<br/>' . $email . '<br/>' . $guideName . '<br/>' . $pricePerH . '<br/>' . $price . '<br/>' . $cardNum . '<br/>' . $stDate . '<br/>' . $enDate . '<br/>';
+
+    // echo "errors<br/>";
+    // // var_dump($errors);
+    // echo '<br/>';
+    // var_dump($nameErr);
+    // echo '<br/>';
+    // var_dump($placeErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($teleErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($emailErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($guideNameErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($perHourErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($stDateErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($priceErr) . '<br/>' . var_dump($cardNumErr) . '<br/>';
 
     if (!$errors) {
+        var_dump($errors);
         try {
             $stmt = $pdo->prepare("INSERT INTO assigned_tourguide(traveller, place, tele, email, start_date, end_date, guide_name, price_per_hour, price, credit_card_num) VALUES (:traveller, :place, :tele, :email, :start_date, :end_date, :guide_name, :price_per_hour ,:price, :credit_card_num)");
             $stmt->execute([
@@ -235,14 +242,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':place' => $place,
                 ':tele' => $tele,
                 ':email' => $email,
-                ':start_date' => date('Y-m-d H:i:s', $stDate),
-                ':end_date' => date('Y-m-d H:i:s', $enDate),
+                ':start_date' => $stDate,
+                ':end_date' => $enDate,
                 ':guide_name' => $guideName,
                 ':price_per_hour' => $pricePerH,
                 ':price' => $price,
                 ':credit_card_num' => $cardNum
             ]);
-            header("Location: tripForm.php?success=true");
+            // header("Location: tripForm.php?success=true");
         } catch (PDOException $e) {
             echo "PDO exception occurred " . $e->getMessage();
         }
@@ -259,10 +266,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4HF Tour and Travel|Create Trip Form</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.css">
-    <script defer src="js/createTrip.js"></script>
-    <script defer src="js/tripDataValidation.js"></script>
+    <!-- <script defer src="js/createTrip.js"></script>
+    <script defer src="js/tripDataValidation.js"></script> -->
     <link rel="stylesheet" href="css/tripCSS.css">
 </head>
 <style>
@@ -296,6 +302,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     .alert-primary {
         background-color: #007e33;
+    }
+
+    .alert-primary,
+    .alert-danger {
         color: aliceblue;
         font-size: 1.5rem;
         margin: 5px 3px;
@@ -304,22 +314,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         border-radius: 5px;
     }
 
-    /* style="background-image: url('bahirdar.jpg');" */
+    .alert-danger {
+        background-color: red;
+    }
 </style>
 
 <body style="background-image: url('bahirdar.jpg');">
     <section class="trip-form-container">
-        <?php if ($errors && $scheduleErr) : ?>
-            <script>
-                const Myalert = function() {
-                    alert('<?php echo $scheduleErr ?>');
-                }
-                Myalert();
-            </script>
-        <?php endif ?>
         <fieldset>
             <legend>Create trip form</legend>
-            <?php if (!$errors) : ?>
+            <?php if (!$errors && isset($_GET['success'])) : ?>
                 <div class="alert alert-primary" role="alert">
                     Data Saved Succesfully
                 </div>
@@ -377,14 +381,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <select name="guides" id="guides">
                         <?php if (!empty($tourguides)) : ?>
                             <?php foreach ($tourguides as $i => $tourguide) : ?>
-                                <option value="<?php echo $tourguide['name'] ?>" <?php
-                                                                                    if ($nameof === $tourguide['name']) {
-                                                                                        echo 'selected';
-                                                                                    } else {
-                                                                                        echo  $guideName == $tourguide['name'] ? 'selected' : '';
-                                                                                    }
-                                                                                    ?>>
-                                    <?php echo  $tourguide['name']; ?>
+                                <option value="<?php echo $tourguide['name'] ?>" <?php if ($nameof === $tourguide['name']) echo 'selected'; ?>>
+                                    <?php echo $guideName ? $guideName : $tourguide['name']; ?>
                                 </option>
                             <?php endforeach ?>
                         <?php endif ?>
@@ -458,7 +456,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach ?>
         }
     </script>
-    <?php include_once 'partials/frontEndValidation.php'; ?>
+    <?php #include_once 'partials/frontEndValidation.php'; 
+    ?>
 </body>
+
 
 </html>

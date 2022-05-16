@@ -12,16 +12,6 @@ const cardNumber = document.getElementById("credit-card");
 const submitBtn = document.getElementById("submit-btn");
 const reset = document.getElementById("reset");
 
-//all the informations must be saved to the local storage
-// then we can fetch and use the data stored
-//checking date
-// calculating price based on the selected tour guide
-var tourGuidesDB = (tourGuidesDB = JSON.parse(
-        localStorage.getItem("tourGuidesDB")
-    ) ?
-    (tourGuidesDB = JSON.parse(localStorage.getItem("tourGuidesDB"))) : []);
-//const passengers = [{FullName:"name",place:"Somewhere",phone:"56234",email:"ASDf@afa",guide:"name",stDate:"date",enDate:"jsaf",cardNum:2345,price:223}];
-//localStorage.setItem("tourGuidesDB",JSON.stringify(tourGuidesDB));
 
 submitBtn.onclick = (e) => {
     const tourist = {
@@ -52,8 +42,6 @@ submitBtn.onclick = (e) => {
         validatePhone() &&
         validateEmail()
     ) {
-        tourGuidesDB.push(tourist);
-        localStorage.setItem("tourGuidesDB", JSON.stringify(tourGuidesDB));
         alert("Thank you we will send a verification mesasge to your email");
         return true;
     } else {
