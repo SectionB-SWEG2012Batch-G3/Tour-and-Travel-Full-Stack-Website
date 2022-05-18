@@ -168,9 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //calculating the total price
     if (empty($stDateErr) && empty($enDateErr) && empty($guideNameErr)) {
         $totalDays = $enDate - $stDate;
-        echo '<br/>' . 'secs ' . $totalDays . '<br/>';
+        // echo '<br/>' . 'secs ' . $totalDays . '<br/>';
         $totalDays = (int)($totalDays / 86400);
-        echo '<br/>' . 'days ' . $totalDays . '<br/>';
+        //  echo '<br/>' . 'days ' . $totalDays . '<br/>';
         $price = $totalDays * $pricePerH;
     }
     #fetching all tourguides schedules data from asigned_tourguide DB
@@ -197,34 +197,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    echo '<br/>' . 'Year ' . date('Y') . '<br/>';
-    echo 'month ' . date('m') . '<br/>';
-    echo 'Day of the month ' . date('d') . '<br/>';
-    echo 'Day of the week ' . date('l') . '<br/>';
-    echo 'hour(24) ' . date('H') . '<br/>';
-    echo 'hour(12) ' . date('ha') . '<br/>';
-    echo 'minute ' . date('i') . '<br/>';
-    echo 'seconds ' . date('s') . '<br/>';
-    echo '<br/>' . $name . '<br/>' . $place . '<br/>' . $tele . '<br/>' . $email . '<br/>' . $guideName . '<br/>' . $pricePerH . '<br/>' . $price . '<br/>' . $cardNum . '<br/>' . date('Y-m-d H:i:s', $stDate) . '<br/>' . date('Y-m-d H:i:s', $enDate) . '<br/>';
+    // echo '<br/>' . 'Year ' . date('Y') . '<br/>';
+    // echo 'month ' . date('m') . '<br/>';
+    // echo 'Day of the month ' . date('d') . '<br/>';
+    // echo 'Day of the week ' . date('l') . '<br/>';
+    // echo 'hour(24) ' . date('H') . '<br/>';
+    // echo 'hour(12) ' . date('ha') . '<br/>';
+    // echo 'minute ' . date('i') . '<br/>';
+    // echo 'seconds ' . date('s') . '<br/>';
+    // echo '<br/>' . $name . '<br/>' . $place . '<br/>' . $tele . '<br/>' . $email . '<br/>' . $guideName . '<br/>' . $pricePerH . '<br/>' . $price . '<br/>' . $cardNum . '<br/>' . date('Y-m-d H:i:s', $stDate) . '<br/>' . date('Y-m-d H:i:s', $enDate) . '<br/>';
 
-    echo "errors<br/>";
-    // var_dump($errors);
-    echo '<br/>';
-    var_dump($nameErr);
-    echo '<br/>';
-    var_dump($placeErr) . '<br/>';
-    echo '<br/>';
-    var_dump($teleErr) . '<br/>';
-    echo '<br/>';
-    var_dump($emailErr) . '<br/>';
-    echo '<br/>';
-    var_dump($guideNameErr) . '<br/>';
-    echo '<br/>';
-    var_dump($perHourErr) . '<br/>';
-    echo '<br/>';
-    var_dump($stDateErr) . '<br/>';
-    echo '<br/>';
-    var_dump($priceErr) . '<br/>' . var_dump($cardNumErr) . '<br/>';
+    // echo "errors<br/>";
+    // // var_dump($errors);
+    // echo '<br/>';
+    // var_dump($nameErr);
+    // echo '<br/>';
+    // var_dump($placeErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($teleErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($emailErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($guideNameErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($perHourErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($stDateErr) . '<br/>';
+    // echo '<br/>';
+    // var_dump($priceErr) . '<br/>' . var_dump($cardNumErr) . '<br/>';
 
 
     if (!$errors) {
@@ -319,7 +319,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif ?>
         <fieldset>
             <legend>Create trip form</legend>
-            <?php if (!$errors) : ?>
+            <?php if (!$errors && isset($_GET['success'])) : ?>
                 <div class="alert alert-primary" role="alert">
                     Data Saved Succesfully
                 </div>
