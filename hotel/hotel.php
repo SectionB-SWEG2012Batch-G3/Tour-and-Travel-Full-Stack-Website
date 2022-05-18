@@ -1,3 +1,33 @@
+<?php
+try {
+  include_once '../dbconfig/connection.php';
+} catch (PDOException $e) {
+  echo 'connection exception ' . $e->getMessage();
+}
+$id = '';
+$hotelName = '';
+
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+}
+
+if (isset($_GET['name'])) {
+  $hotelName = $_GET['name'];
+}
+
+$stmt = $pdo->prepare("SELECT * FROM hotel WHERE id = :id");
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$hotel = $stmt->fetch();
+
+$stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc");
+$stmt->bindValue(':id', $id);
+$stmt->bindValue(':desc', $hotelName);
+$stmt->execute();
+$images = $stmt->fetchAll();
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +45,9 @@
   <link rel="stylesheet" href="css/search.css">
   <script defer src="../JS/NavScript.js"></script>
   <script defer src="../JS/search-boxScript.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
@@ -24,8 +57,7 @@
         <a href="../homepage.html">
           <svg height="100" width="125">
             <ellipse cx="62.5" cy="50" rx="55" ry="45" fill="url(#grad2)" />
-            <polygon points="62.5,5 85,50 62.5,95 40,50"
-              style="stroke: rgb(255, 255, 255); fill: rgba(255, 255, 0, 1);" />
+            <polygon points="62.5,5 85,50 62.5,95 40,50" style="stroke: rgb(255, 255, 255); fill: rgba(255, 255, 0, 1);" />
             <text fill="#000000" font-size="25" font-family="Verdana" x="20" y="60">4</text>
             <text fill="#000000" font-size="25" font-family="Verdana" x="52.5" y="60">H</text>
             <text fill="#000000" font-size="25" font-family="Verdana" x="90" y="60">F</text>
@@ -50,8 +82,7 @@
       </div>
       <div class="search-bar-container">
         <div class="input-container">
-          <input class="searchBar" type="Search" name="searchBar" value="" placeholder="Where to go... "
-            list="ethiopia">
+          <input class="searchBar" type="Search" name="searchBar" value="" placeholder="Where to go... " list="ethiopia">
           <a href="#" class="search-icon">
             <i class="fa fa-2x fa-search" aria-hidden="true"></i>
           </a>
@@ -141,102 +172,39 @@
     <div class="slideContainer">
 
       <div class="slider">
-        <div class="slide active">
-          <img src="image24/arbatourist.jpg" alt="sheraton addis compound">
-          <div class="info">
-            <h2>Compound</h2>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="image24/arbatourist2.jpg" alt="sheraton addis compound">
-          <div class="info">
-            <h2>Compound</h2>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="image24/arbatourist7.jpg" alt="sheraton addis rooms">
-          <div class="info">
-            <h2>Rooms</h2>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="image24/arbatourist8.jpg" alt="sheraton addis Rooms">
-          <div class="info">
-            <h2>Rooms</h2>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="image24/arbatourist1.jpg" alt="Bar and Restaurant">
-          <div class="info">
-            <h2>Bar and Restaurant</h2>
-            <p></p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="image24/arbatourist3.jpg" alt="Bar and Restaurant">
-          <div class="info">
-            <h2>Bar and Restaurant</h2>
-            <p></p>
-          </div>
-        </div>
+        <?php if (!empty($images)) : ?>
+          <?php foreach ($images as $i => $image) : ?>
+            <div class="slide <?php if ($i == 0) echo 'active' ?>">
+              <img src="../Admin/<?php echo $image['path'] ?>" alt="<?php echo $image['description'] ?>">
+              <div class="info">
+                <h2><?php echo $hotel['hotel_name'] ?></h2>
+                <p></p>
+              </div>
+            </div>
+          <?php endforeach ?>
+        <?php endif ?>
 
 
         <div class="navigation">
-
           <svg height="50" width="50" class="prev-btn">
-
-            <polygon points="10,25 40,5 40,15 25,25 40,35 40,45 "
-              style="stroke: rgb(255, 255, 255); fill: rgb(0, 0, 0);" />
-
+            <polygon points="10,25 40,5 40,15 25,25 40,35 40,45 " style="stroke: rgb(255, 255, 255); fill: rgb(0, 0, 0);" />
           </svg>
           <svg height="50" width="50" class="next-btn">
-
-            <polygon points="10,5 40,25 10,45 10,35 25,25 10,15 "
-              style="stroke: rgb(255, 255, 255); fill: rgb(0, 0, 0);" />
-
+            <polygon points="10,5 40,25 10,45 10,35 25,25 10,15 " style="stroke: rgb(255, 255, 255); fill: rgb(0, 0, 0);" />
           </svg>
-
         </div>
+
         <div class="navigation-visibility">
-          <div class="slide-icon active">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
-          <div class="slide-icon">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
-          <div class="slide-icon">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
-          <div class="slide-icon">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
-          <div class="slide-icon">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
-          <div class="slide-icon">
-            <svg height="20" width="30">
-              <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-            </svg>
-          </div>
+
+          <?php if (!empty($images)) : ?>
+            <?php foreach ($images as $i => $image) : ?>
+              <div class="slide-icon <?php if ($i == 0) echo 'active' ?>">
+                <svg height="20" width="30">
+                  <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
+                </svg>
+              </div>
+            <?php endforeach ?>
+          <?php endif ?>
         </div>
       </div>
 
@@ -251,62 +219,32 @@
       <button class="button"><a href="#A3"> Bar and Restaurant </a></button>
 
     </div>
-    <div class="area scroll">
-      <h2 id="A1">Compound</h2>
-      <div class="flex-container container">
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist.jpg" alt="Arba Minch Tourist compound" width="400" height="273">
-        </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist2.jpg" alt="Arba Minch Tourist compound" width="400" height="273">
-        </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist4.jpg" alt="Arba Minch Tourist compound" width="400" height="273">
-        </div>
-      </div>
-    </div>
-    <div class="area scroll">
-      <h2 id="A2">Rooms</h2>
-      <div class="flex-container container">
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist7.jpg" alt="Arba Minch Tourist Rooms" width="400" height="273">
-        </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist8.jpg" alt="Arba Minch Tourist Rooms" width="400" height="273">
-        </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist9.jpg" alt="Arba Minch Tourist Rooms" width="400" height="273">
+    <div class="area">
+      <div class="card-group">
+        <div class="col scroll">
+          <?php if (!empty($images)) : ?>
+            <?php foreach ($images as $i => $image) : ?>
+              <div class="card m-3" style="width: 20rem;display:inline-block">
+                <img height="200" width="220" src="../Admin/<?php echo $image['path'] ?>" class="card-img-top" alt="<?php echo $image['description'] ?>">
+                <div class="card-body" style="display:inline-block">
+                  <h5 class="card-title"><?php echo $image['description'] ?></h5>
+                  <p class="card-text" style="display:inline-block">Some quick example text to build</p>
+                </div>
+              </div>
+            <?php endforeach ?>
+          <?php endif ?>
         </div>
       </div>
-    </div>
-    <div class="area scroll">
-      <h2 id="A3">Bar and Restaurant</h2>
-      <div class="flex-container container">
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist1.jpg" alt="Arba Minch Tourist Bar and Restaurant" width="400" height="273">
+      <?php if (empty($images)) : ?>
+        <div class="alert alert-primary m-4" role="alert">
+          Empty Gallary
         </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist3.jpg" alt="Arba Minch Tourist Bar and Restaurant" width="400" height="273">
-        </div>
-
-        <div style="align-items: flex-start" ; class="box flex-item">
-          <img src="image24/arbatourist6.jpg" alt="Arba Minch Tourist Bar and Restaurant" width="400" height="273">
-          <p class="title" style="font-size: 30px;">
-            WOW!!!
-          </p>
-        </div>
-      </div>
+      <?php endif ?>
     </div>
 
 
     <button class="button">
-      <a
-        href="https://www.kayak.com/Bahir-Dar-Hotels-Hotel-Blue-Nile.2237129.ksp?r9ck=iq&gclid=CjwKCAiAzrWOBhBjEiwAq85QZyhJtASAkfTlxLgojQ7ntTMViourdLWQ7GJoZ1hn-br7k9ROf1gyFxoCUTcQAvD_BwE">
+      <a href="">
         Book Now
       </a>
     </button>
@@ -360,7 +298,6 @@
         toTop.classList.remove("visible");
       }
     });
-
   </script>
 
 </body>

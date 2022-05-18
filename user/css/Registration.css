@@ -5,6 +5,7 @@
 }
 
 body {
+    background-image: url("../Tisabay.jpg");
     background-size: cover;
     background-position: center center;
 }
