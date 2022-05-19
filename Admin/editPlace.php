@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':newDesc', $placeName);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':desc', $oldplaceName);
+        $stmt->execute();
 
         $sql = "UPDATE places_to_visit SET title = :name, description = :desc, mapLink = :link WHERE id = :id";
         include_once 'placePartials/saveToDB.php';

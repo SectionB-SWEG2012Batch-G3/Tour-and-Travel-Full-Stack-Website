@@ -19,6 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':newDesc', $regionName);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':desc', $oldregionName);
+        $stmt->execute();
+
+        echo '<br/> old nmae ' . $regionName . '<br/>';
+        echo '<br/> old nmae ' . $oldregionName . '<br/>';
+        echo '<br/> old nmae ' . $id . '<br/>';
+
+        $stmt = $pdo->prepare("UPDATE places_to_visit SET regionName = :newName WHERE region_id = :id && regionName = :rName");
+        $stmt->bindParam(':newName', $regionName);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':rName', $oldregionName);
+        $stmt->execute();
 
         $sql = "UPDATE destination SET RegionName = :name, description = :desc, image = :imgPath, wikiLink = :link,video = :vid WHERE id = :id";
         if (!is_dir('uploads/images/')) {
@@ -43,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
-        header('Location: destinations.php?active=destination');
+        // header('Location: destinations.php?active=destination');
     }
 }
 include_once 'destPartials/form.php';

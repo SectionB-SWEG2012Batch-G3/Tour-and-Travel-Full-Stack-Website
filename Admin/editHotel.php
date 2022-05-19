@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (empty($errors)) {
         $stmt = $pdo->prepare("UPDATE image SET description = :newDesc WHERE imageFor = :id && description = :desc");
-        // echo '<br/>' . $hotelName . '<br/>' . $oldhotelName . $id . '<br/>';
         $stmt->bindParam(':newDesc', $hotelName);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':desc', $oldhotelName);
@@ -28,6 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // mkdir(dirname('uploads/images/'.randomString(8).'/'.$image['name']));
             // echo $isCreated;
             move_uploaded_file($image['tmp_name'], $imagePath);
+            $stmt = $pdo->prepare("UPDATE image SET description = :newDesc, path = :newpath WHERE imageFor = :id && description = :desc && path = :oldpath");
+            $stmt->bindParam(':newDesc', $hotelName);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':newpath', $imagePath);
+            $stmt->bindParam(':oldpath', $oldPath);
+            $stmt->execute();
         }
 
         include_once 'hotelPartials/save_to_DB.php';
