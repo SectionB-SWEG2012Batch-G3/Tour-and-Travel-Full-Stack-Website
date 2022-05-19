@@ -167,12 +167,13 @@ include_once '../dbconfig/connection.php';
 
         ?> <h2 style="text-align: center; margin-top: 30px; margin-bottom: 30px;" id="car">Choose your favourite car</h2>
 
+
+        <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For alone or couple</h3>
         <?php if (!empty($cars)) : ?>
-            <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For alone or couple</h3>
             <div class="alone-grid scroll">
                 <?php foreach ($cars as $i => $car) : ?>
                     <?php
-                    $stmt = $pdo->prepare("SELECT * FROM image WHERE id = :id && description = :desc");
+                    $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc");
                     $stmt->bindParam(':id', $car['id']);
                     $stmt->bindParam(':desc', $car['modelName']);
                     $stmt->execute();
@@ -188,7 +189,7 @@ include_once '../dbconfig/connection.php';
                                 <p class="alone-card-text">
                                     Price <?php echo $car['price'] ?>$ <br>
                                 </p>
-                                <button class="alone-card-btn"><a href="viewCar.php?id=<?php echo $car['id'] ?>">See More</a></button>
+                                <button class="alone-card-btn"><a href="car.php?id=<?php echo $car['id'] ?>">See More</a></button>
                             </div>
                         </div>
                     </div>
@@ -203,8 +204,9 @@ include_once '../dbconfig/connection.php';
 
         ?>
 
+
+        <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For Family</h3>
         <?php if (!empty($cars)) : ?>
-            <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For Family</h3>
             <div class="alone-grid scroll">
                 <?php foreach ($cars as $i => $car) : ?>
                     <?php
@@ -224,7 +226,7 @@ include_once '../dbconfig/connection.php';
                                 <p class="alone-card-text">
                                     Price <?php echo $car['price'] ?>$ <br>
                                 </p>
-                                <button class="alone-card-btn"><a href="viewCar.php?id=<?php echo $car['id'] ?>">See More</a></button>
+                                <button class="alone-card-btn"><a href="car.php?id=<?php echo $car['id'] ?>">See More</a></button>
                             </div>
                         </div>
                     </div>
@@ -238,8 +240,9 @@ include_once '../dbconfig/connection.php';
 
         ?>
 
+
+        <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For Group</h3>
         <?php if (!empty($cars)) : ?>
-            <h3 style="text-align: center; margin-bottom: 10px;" class="scroll" id="foralone">For Group</h3>
             <div class="alone-grid scroll">
                 <?php foreach ($cars as $i => $car) : ?>
                     <?php
@@ -248,6 +251,7 @@ include_once '../dbconfig/connection.php';
                     $stmt->bindParam(':desc', $car['modelName']);
                     $stmt->execute();
                     $images = $stmt->fetchAll();
+
                     ?>
                     <div class="alone-grid-item">
                         <div class="alone-card">
@@ -259,7 +263,7 @@ include_once '../dbconfig/connection.php';
                                 <p class="alone-card-text">
                                     Price <?php echo $car['price'] ?>$ <br>
                                 </p>
-                                <button class="alone-card-btn"><a href="viewCar.php?id=<?php echo $car['id'] ?>">See More</a></button>
+                                <button class="alone-card-btn"><a href="car.php?id=<?php echo $car['id'] ?>">See More</a></button>
                             </div>
                         </div>
                     </div>

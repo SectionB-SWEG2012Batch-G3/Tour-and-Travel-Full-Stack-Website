@@ -66,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query->execute();
         }
 
-        // header("Location: manageImages.php?id=$id&name=$title&active=$active");
+        header("Location: manageImages.php?id=$id&name=$title&active=$active");
+    } else {
+        var_dump($errors);
     }
 }
 

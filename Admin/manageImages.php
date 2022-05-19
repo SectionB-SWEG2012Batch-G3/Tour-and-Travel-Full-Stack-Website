@@ -103,26 +103,26 @@ $images = $stmt->fetchAll();
                             <h5 class="card-title"><?php echo $image['description'] ?></h5>
                             <p class="card-text" style="display:inline-block">Some quick example text to build</p>
 
-                            <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModala">
+                            <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModala<?php echo $i ?>">
                                 Change
                             </button>
-                            <div class="modal fade" id="exampleModala" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModala<?php echo $i ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Insert image</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form method="POST" id="form" action="updateImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>" enctype="multipart/form-data">
+                                        <form method="POST" id="form<?php echo $i ?>" name="form<?php echo $i ?>" action="updateImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>&img=<?php echo $image['id'] ?>" enctype="multipart/form-data">
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="image">Image to replace</label>
-                                                    <input type="file" class="form-control" value="<?php echo $images ?>" name='image' id="image">
+                                                    <input type="file" class="form-control" name='image' id="image">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" form="form" class="btn btn-primary">Save</button>
+                                                <button type="submit" form="form<?php echo $i ?>" class="btn btn-primary">Save</button>
                                             </div>
                                         </form>
                                     </div>
@@ -174,7 +174,7 @@ $images = $stmt->fetchAll();
                     <h5 class="modal-title" id="exampleModalLabel">Insert image</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" id="form2" action="saveImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>" enctype="multipart/form-data">
+                <form method="POST" id="form" name="form" action="saveImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label" for="image">Images(can choose multiple images)</label>
@@ -183,7 +183,7 @@ $images = $stmt->fetchAll();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" form="form2" class="btn btn-primary">Save</button>
+                        <button type="submit" form="form" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>

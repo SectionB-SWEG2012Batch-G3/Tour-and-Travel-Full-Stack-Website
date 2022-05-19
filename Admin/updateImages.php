@@ -3,10 +3,14 @@ include_once '../dbconfig/connection.php';
 include_once 'validation/randomFileCreate.php';
 
 $id = '';
+$imgId = '';
 $title = '';
 $active = '';
 if (isset($_GET['name'])) {
     $title = $_GET['name'];
+}
+if (isset($_GET['img'])) {
+    $imgId = $_GET['img'];
 }
 if (isset($_GET['active'])) {
     $active = $_GET['active'];
@@ -15,7 +19,7 @@ if (isset($_GET['active'])) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-echo $active . '<br/>';
+echo $imgId . '<br/>';
 $target_file = '';
 $imageFileType = '';
 $errors = [];
@@ -46,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (empty($errors)) {
 
     try {
-        $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc");
-        $stmt->execute([':id' => $id, ':desc' => $title]);
+        $stmt = $pdo->prepare("SELECT * FROM image WHERE id = :id");
+        $stmt->execute([':id' => $imgId]);
         $image = $stmt->fetch();
         if (!is_dir('uploads/images/')) {
             mkdir('uploads/images/');
@@ -60,6 +64,7 @@ if (empty($errors)) {
 
         $stmt = $pdo->prepare("UPDATE image SET path = :path WHERE id = :id");
         $stmt->bindParam(':path', $target_file);
+        echo '<br/>' . $image['id'];
         $stmt->bindParam(':id', $image['id']);
         $stmt->execute();
     } catch (PDOException $e) {
