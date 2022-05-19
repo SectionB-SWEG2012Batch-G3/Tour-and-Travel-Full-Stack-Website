@@ -6,9 +6,16 @@ include_once '../dbconfig/connection.php';
 $sql = "SELECT * FROM image WHERE imageFor = :for && description = :desc";
 $id = '';
 $title = '';
+$active = '';
 if (isset($_GET['name'])) {
     $title = $_GET['name'];
 }
+
+if (isset($_GET['active'])) {
+    $active = $_GET['active'];
+}
+
+echo $active;
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -28,7 +35,7 @@ $images = $stmt->fetchAll();
 // $errors = [];
 // $tmp_names = [];
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $image_names =  [];
+//     $image_names =  []; 
 //     $tmp_names = [];
 //     $files = $_FILES['image'];
 
@@ -80,11 +87,8 @@ $images = $stmt->fetchAll();
 // }
 
 ?>
-<li>
-    <a class="active" href="#">Destinations </a>
-</li>
 <li><i class='bx bx-chevron-right'></i></li>
-<li><a class="active" href="#"><?php echo $title ?> Images</a></li>
+<li><a class="active" href="#"><?php echo  $title ?> Images </a></li>
 </ul>
 </div>
 </div>
@@ -109,7 +113,7 @@ $images = $stmt->fetchAll();
                                             <h5 class="modal-title" id="exampleModalLabel">Insert image</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form method="POST" id="form" action="updateImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>" enctype="multipart/form-data">
+                                        <form method="POST" id="form" action="updateImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>" enctype="multipart/form-data">
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="image">Image to replace</label>
@@ -124,9 +128,9 @@ $images = $stmt->fetchAll();
                                     </div>
                                 </div>
                             </div>
-                            <a href="updateImage.php" class="btn btn-danger m-3" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $i ?>">
+                            <button class="btn btn-danger m-3" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $i ?>">
                                 Delete
-                            </a>
+                            </button>
                             <div class="modal fade" id="exampleModal<?php echo $i ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -139,7 +143,7 @@ $images = $stmt->fetchAll();
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                            <a href="deleteImage.php?id=<?php echo $image['id']; ?>&title=<?php echo $title ?>" form="form" class="btn btn-primary">Yes</a>
+                                            <a href="deleteImage.php?id=<?php echo $image['id']; ?>&title=<?php echo $title ?>&active=<?php echo $active ?>" form="form" class="btn btn-primary">Yes</a>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +174,7 @@ $images = $stmt->fetchAll();
                     <h5 class="modal-title" id="exampleModalLabel">Insert image</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" id="form2" action="saveImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>" enctype="multipart/form-data">
+                <form method="POST" id="form2" action="saveImages.php?id=<?php echo $id ?>&name=<?php echo $title ?>&active=<?php echo $active ?>" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label" for="image">Images(can choose multiple images)</label>

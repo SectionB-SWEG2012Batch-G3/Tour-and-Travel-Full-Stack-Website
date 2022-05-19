@@ -55,7 +55,7 @@ $places = $stmt2->fetchAll();
                     <td scope="row" rowspan="2">
                         <a class="btn btn-sm btn-outline-primary m-2">Edit</a>
                         <a class="btn btn-sm btn-outline-danger m-2">Delete</a>
-                        <a href="managehOTELImages.php?id=<?php echo $place['id'] ?>&active=destination&name=<?php echo $place['title'] ?>" class="btn btn-sm btn-outline-primary m-2">Manage the images</a>
+                        <a href="manageImages.php?id=<?php echo $place['id'] ?>&active=destination&name=<?php echo $place['title'] ?>" class="btn btn-sm btn-outline-primary m-2">Manage the images</a>
                     </td>
                 </tr>
                 <tr>

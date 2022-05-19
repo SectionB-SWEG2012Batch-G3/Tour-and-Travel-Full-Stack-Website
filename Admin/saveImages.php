@@ -6,13 +6,18 @@ $errors = [];
 $tmp_names = [];
 $id = '';
 $title = '';
+$active = '';
 if (isset($_GET['name'])) {
     $title = $_GET['name'];
+}
+if (isset($_GET['active'])) {
+    $active = $_GET['active'];
 }
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+echo $title;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image_names =  [];
     $tmp_names = [];
@@ -50,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         foreach ($image_names as $i => $name) {
             $target_file = 'uploads/images/' . $title . randomString(8) . '/' . $name;
-            // echo '<br/>'.$target_file.'<br/>';
+            echo '<br/>' . $title . '<br/>';
             $isCreated = mkdir(dirname($target_file));
             // echo '<br/>'.$isCreated.'<br/>';
             move_uploaded_file($tmp_names[$i], $target_file);
@@ -60,7 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query->bindParam(':for', $id);
             $query->execute();
         }
-        header("Location: manageHotelImages.php?active=hotel&id=$id&name=$title");
+
+        // header("Location: manageImages.php?id=$id&name=$title&active=$active");
     }
 }
 

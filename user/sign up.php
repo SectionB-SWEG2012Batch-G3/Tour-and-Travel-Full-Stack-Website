@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = test_input($_POST['Password'] ?? '');
     $cpassword = test_input($_POST['confirm'] ?? '');
 
-    echo '<br/>' . $email . '<br/>' . $password . '<br/>' . $cpassword;
+    // echo '<br/>' . $email . '<br/>' . $password . '<br/>' . $cpassword;
 
     $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $emailExist = !empty($stmt->fetch());
-    echo '<br/>' . $emailExist;
+    // echo '<br/>' . $emailExist;
     if ($emailExist) {
         $emailErr[] = 'Email is already registered, please login';
     }
@@ -49,12 +49,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $passwordErr[] = 'password is too short, make it at least 8';
         $errors = true;
     }
-    if ($password !== $cpassword) {
+    if ($password !== $cpassword || $cpassword === '') {
         $cpasswordErr[] = 'Confirm your password';
         $errors = true;
     }
 
+    $password = password_hash($password, PASSWORD_BCRYPT);
+    echo $password;
+
     if (!$errors) {
+        $stmt = $pdo->prepare("INSERT INTO user(email,password) VALUES(:email,:pass)");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':pass', $password);
+        $stmt->execute();
+        header("Location: sign up.php");
     }
 }
 ?>
@@ -71,6 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../css/footerCSS.css">
     <script defer src="js/signup.js"></script>
     <script defer src="js/createAcountStorage.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Sign in</title>
 
     <style>
@@ -380,8 +391,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <small><?php echo $cpasswordErr[0] ?? '' ?></small>
                     </div>
                     <input type="submit" id="submit" name="submit" value="Signup"><br>
+                    <a href="log in.php" class="btn btn-primary m-2 py-2 px-4">Login</a>
                 </form>
-
 
             </fieldset>
         </div>

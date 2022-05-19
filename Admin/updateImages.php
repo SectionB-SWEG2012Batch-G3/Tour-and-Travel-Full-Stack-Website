@@ -4,13 +4,18 @@ include_once 'validation/randomFileCreate.php';
 
 $id = '';
 $title = '';
+$active = '';
 if (isset($_GET['name'])) {
     $title = $_GET['name'];
+}
+if (isset($_GET['active'])) {
+    $active = $_GET['active'];
 }
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+echo $active . '<br/>';
 $target_file = '';
 $imageFileType = '';
 $errors = [];
@@ -60,5 +65,5 @@ if (empty($errors)) {
     } catch (PDOException $e) {
         echo 'PDO exception ' . $e->getMessage();
     }
-    header("Location: manageHotelImages.php?active=hotel&id=$id&name=$title");
+    header("Location: manageImages.php?id=$id&name=$title&active=$active");
 }
