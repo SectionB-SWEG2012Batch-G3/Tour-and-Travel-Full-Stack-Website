@@ -17,6 +17,7 @@ $stmt->execute([':id' => $id]);
 $hotel = $stmt->fetch();
 
 $hotelName = $hotel['hotel_name'] ?? '';
+$oldhotelName = $hotelName;
 $regionName = $hotel['region_name'] ?? '';
 $minPrice = $hotel['min_price'] ?? '';
 $rating = $hotel['rating'] ?? '';

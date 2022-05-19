@@ -9,7 +9,7 @@ try {
     $stmt->execute([':id' => $id]);
     $car = $stmt->fetch();
 
-    $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc");
+    $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc LIMIT 10");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':desc', $car['modelName']);
     $stmt->execute();
@@ -151,59 +151,20 @@ try {
 
 
         <h1><?php echo $car['modelName'] ?></h1>
-
-
         <div class="slideContainer">
 
             <div class="slider">
-                <div class="slide active">
-                    <img src="images/car/alone/honda city/1.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="images/car/alone/honda city/2.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="images/car/alone/honda city/3.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="images/car/alone/honda city/4.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="images/car/alone/honda city/5.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <img src="images/car/alone/honda city/6.webp" alt="Honda City">
-                    <div class="info">
-                        <h2></h2>
-                        <p></p>
-                    </div>
-                </div>
-
+                <?php if (!empty($images)) : ?>
+                    <?php foreach ($images as $i => $image) : ?>
+                        <div class="slide <?php if ($i === 0) echo 'active' ?>">
+                            <img src="../Admin/<?php echo $image['path'] ?>" alt="<?php echo $image['description'] ?>">
+                            <div class="info">
+                                <h2><?php echo $image['description'] ?></h2>
+                                <p></p>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                <?php endif ?>
                 <div class="navigation">
 
                     <!-- <img src="../../star3.png" alt="star" class="prev-btn" height="50px"> -->
@@ -222,69 +183,25 @@ try {
                     <!-- <img src="../../star3.png" alt="star" class="next-btn" height="50px"> -->
                 </div>
                 <div class="navigation-visibility">
-                    <div class="slide-icon active">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-
-                        </svg>
-                    </div>
-                    <div class="slide-icon">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-
-                        </svg>
-                    </div>
-                    <div class="slide-icon">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-
-                        </svg>
-                    </div>
-                    <div class="slide-icon">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-
-                        </svg>
-                    </div>
-                    <div class="slide-icon">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
-
-                        </svg>
-                    </div>
-                    <div class="slide-icon">
-                        <svg height="20" width="30">
-
-
-                            <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255);" />
-
-                        </svg>
-                    </div>
+                    <?php if (!empty($images)) : ?>
+                        <?php foreach ($images as $i => $image) : ?>
+                            <div class="slide-icon <?php if ($i === 0) echo 'active' ?>">
+                                <svg height="20" width="30">
+                                    <polygon class="slideSvg" points="1,1 29,1 29,15 1,15" style="stroke: rgb(255, 255, 255); " />
+                                </svg>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
                 </div>
             </div>
-
-
 
         </div>
 
         <div class="mainBord">
             <div class="bord scroll">
-                <h2 class="bord-head">Honda City Review</h2>
+                <h2 class="bord-head"><?php echo $car['modelName'] ?></h2>
 
-
-
-
-                <p class="bord-text"><span style="margin-right: 20px;"><b>Price:</b></span><b><span id="price" style="display: inline;">100$ per day</span></b></p>
+                <p class="bord-text"><span style="margin-right: 20px;"><b>Price:</b></span><b><span id="price" style="display: inline;"><?php echo $car['price'] ?>$ per day</span></b></p>
 
                 <!-- <h3 style="display: inline;">The rate is</h3> -->
 
@@ -304,13 +221,7 @@ try {
                 </div>
                 <!-- <meter value="4.3" min="0" max="5">4.3 out of 5</meter> -->
                 <div class="bord-text">
-                    Body Type Sedan<br>
-                    Total Seating 5<br>
-                    Automatic Climate Control<br>
-                    Fuel Type Diesel Engine<br>
-                    Passenger Airbag<br>
-                    No. of cylinder 4<br>
-                    Air Conditioner<br>
+                    <?php echo $car['description'] ?>
                 </div>
 
                 <div class="rate-car" style="display: inline;">
@@ -331,7 +242,7 @@ try {
                 </div>
 
                 <div>
-                    <button class="button"><a href="reserve.html" onclick="passValues()"> Reserve car </a></button>
+                    <button class="button"><a href="reserve.php" onclick="passValues()"> Reserve car </a></button>
                 </div>
 
             </div>
@@ -364,54 +275,39 @@ try {
         <div class="grid">
 
             <div class="grid-content" style="margin-top: 30px" id="grid1">
-
+                <?php
+                $stmt = $pdo->prepare("SELECT * FROM transport ORDER BY rating LIMIT 3");
+                $stmt->execute();
+                $cars = $stmt->fetchAll();
+                ?>
                 <aside>
                     <h3>Top rated cars</h3>
                     <div class="-grid scroll">
-                        <div class="-grid-item">
-                            <div class="alone-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="images/car/alone/honda city/1.webp" alt="honda city">
+                        <?php if (!empty($cars)) : ?>
+                            <?php foreach ($cars as $i => $car) : ?>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc LIMIT 1");
+                                $stmt->bindParam(':id', $car['id']);
+                                $stmt->bindParam(':desc', $car['modelName']);
+                                $stmt->execute();
+                                $image = $stmt->fetch();
+                                ?>
+                                <div class="-grid-item">
+                                    <div class="alone-card">
+                                        <div class="imc">
+                                            <img class="-card-img" src="../Admin/<?php echo $image['path'] ?>" alt="<?php echo $image['description'] ?>">
+                                        </div>
+                                        <div class="-card-content">
+                                            <h2 class="-card-header"><?php echo $car['modelName'] ?></h2>
+                                            <p class="-card-text">
+                                                Price <?php echo $car['price'] ?>$
+                                            </p>
+                                            <button class="-card-btn"><a href="car.php?id=<?php echo $car['id'] ?>">See More</a></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">Honda City</h2>
-                                    <p class="-card-text">
-                                        Price 100$
-                                    </p>
-                                    <button class="-card-btn"><a href="acar1.html">See More</a></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="-grid-item">
-                            <div class="-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="images/car/family/v8/1.jpg" alt="toyota sedan">
-                                </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">V8</h2>
-                                    <p class="-card-text">
-                                        Price 200$
-                                    </p>
-                                    <button class="-card-btn"><a href="fcar1.html">See More</a></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="-grid-item">
-                            <div class="-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="images/car/group/hyndai/1.webp" alt="vitz">
-                                </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">Hyundai</h2>
-                                    <p class="-card-text">
-                                        Price 125$
-                                    </p>
-                                    <button class="-card-btn"><a href="gcar1.html">See More</a></button>
-                                </div>
-                            </div>
-                        </div>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 </aside>
             </div>
@@ -422,55 +318,41 @@ try {
             <div class="grid-content" id="grid3">
 
                 <aside>
+                    <?php
+                    $stmt = $pdo->prepare("SELECT * FROM places_to_visit LIMIT 3");
+                    $stmt->execute();
+                    $places = $stmt->fetchAll();
+                    ?>
                     <h3>Top Visited places</h3>
+
                     <div class="-grid scroll">
-                        <div class="-grid-item">
-                            <div class="alone-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="../destination/addisababa/images/unity3.jpg" alt="honda city">
+                        <?php if (!empty($places)) : ?>
+                            <?php foreach ($places as $i => $place) : ?>
+                                <?php
+                                $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc LIMIT 1");
+                                $stmt->bindParam(':id', $place['id']);
+                                $stmt->bindParam(':desc', $place['title']);
+                                $stmt->execute();
+                                $image = $stmt->fetch();
+                                ?>
+                                <div class="-grid-item">
+                                    <div class="alone-card">
+                                        <div class="imc">
+                                            <img class="-card-img" src="../Admin/<?php echo $image['path'] ?>" alt="honda city">
+                                        </div>
+                                        <div class="-card-content">
+                                            <h2 class="-card-header"><?php echo $place['title'] ?></h2>
+                                            <p class="-card-text">
+                                                Location <?php echo $place['regionName'] ?>
+                                            </p>
+                                            <button class="-card-btn"><a href="../destination/destination.php?id=<?php echo $place['id'] ?>&name=<?php echo $place['regionName'] ?>">See
+                                                    More</a></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">Unity Park</h2>
-                                    <p class="-card-text">
-                                        Location Addis Ababa
-                                    </p>
-                                    <button class="-card-btn"><a href="../destination/addisababa/unitypark.html">See
-                                            More</a></button>
-                                </div>
-                            </div>
-                        </div>
+                            <?php endforeach ?>
+                        <?php endif ?>
 
-                        <div class="-grid-item">
-                            <div class="-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="../destination/arbaminch/images/nechsar2.jpg" alt="toyota sedan">
-                                </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">Nechisar</h2>
-                                    <p class="-card-text">
-                                        Location Arbaminch
-                                    </p>
-                                    <button class="-card-btn"><a href="../destination/arbaminch/nechsar.html">See
-                                            More</a></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="-grid-item">
-                            <div class="-card">
-                                <div class="imc">
-                                    <img class="-card-img" src="../destination/jinka/images/omonationalpark3.png" alt="vitz">
-                                </div>
-                                <div class="-card-content">
-                                    <h2 class="-card-header">Omo National Park</h2>
-                                    <p class="-card-text">
-                                        Location Jinka
-                                    </p>
-                                    <button class="-card-btn"><a href="../destination/jinka/omonationalpark.html">See
-                                            More</a></button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </aside>
             </div>

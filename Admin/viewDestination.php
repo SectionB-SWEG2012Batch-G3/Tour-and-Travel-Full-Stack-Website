@@ -53,8 +53,8 @@ $places = $stmt2->fetchAll();
                     <td scope="row"><?php echo explode('.', $place['description'])[0]; ?></td>
                     <td scope="row"><?php echo $place['mapLink'] ?></td>
                     <td scope="row" rowspan="2">
-                        <a class="btn btn-sm btn-outline-primary m-2">Edit</a>
-                        <a class="btn btn-sm btn-outline-danger m-2">Delete</a>
+                        <a href="editPlace.php?active=destination&pid=<?php echo $place['id'] ?>" class=" btn btn-sm btn-outline-primary m-2">Edit</a>
+                        <a href="deletePlace.php?active=destination&pid=<?php echo $place['id'] ?>" class="btn btn-sm btn-outline-danger m-2">Delete</a>
                         <a href="manageImages.php?id=<?php echo $place['id'] ?>&active=destination&name=<?php echo $place['title'] ?>" class="btn btn-sm btn-outline-primary m-2">Manage the images</a>
                     </td>
                 </tr>

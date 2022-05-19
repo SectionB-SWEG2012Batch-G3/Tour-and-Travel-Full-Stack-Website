@@ -34,15 +34,13 @@ include_once 'includes/header.php'
             <label for="maxprice" class="form-label">Max Price</label>
             <input type="number" class="form-control" step="0.01" max="1000" value="<?php echo $maxPrice ?>" name='maxprice' id="maxprice">
         </div>
-
         <div class="mb-3">
-            <label for="rating" class="form-label">Rating</label>
-            <input type="number" class="form-control" step="1" min="1" max="5" value="<?php echo $rating ?>" name='rating' id="rating" />
+            <label for="rate" class="form-label">Rating</label>
+            <input class="form-control" type="text" name="rate" id="rate" value="<?php echo $rating ?>" placeholder="Rating" />
         </div>
-
         <div class="mb-3">
             <labe class="form-label" for="image">Image</labe>
-            <input type="file" class="form-control" value="<?php echo $imagePath ?>" name='image' id="image" />
+            <input type="file" class="form-control" value="<?php echo $imagePath ?>" name="image" id="image" />
         </div>
 
         <div class="mb-3">

@@ -40,7 +40,7 @@
 </div>
 <div class="mb-3">
     <label for="carDescription" class="form-label">Car Description</label>
-    <textarea name="carDescription" cols="30" rows="10" class="form-control">value="<?php echo $desc ?>"</textarea>
+    <textarea name="carDescription" cols="30" rows="10" class="form-control" placeholder="<?php echo $desc ? '' : 'Something about the car...' ?>"><?php echo $desc ?? '' ?></textarea>
 
     <div class="<?php
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

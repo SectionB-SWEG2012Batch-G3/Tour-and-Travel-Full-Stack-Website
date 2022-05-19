@@ -11,6 +11,7 @@ $stmt->execute([':id' => $id]);
 $Car = $stmt->fetch();
 
 $carName = $Car['modelName'] ?? '';
+$oldcarName = $carName;
 $price = $Car['price'] ?? '';
 $category = $Car['category'] ?? '';
 $desc = $Car['description'] ?? '';
