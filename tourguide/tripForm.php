@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($stDateErr) && empty($enDateErr) && empty($guideNameErr)) {
         $totalDays = $enDate - $stDate;
         // echo '<br/>' . 'secs ' . $totalDays . '<br/>';
-        $totalDays = (int)($totalDays / 86400);
+        $totalDays = (int)($totalDays / 86400) - 1;
         //  echo '<br/>' . 'days ' . $totalDays . '<br/>';
         $price = $totalDays * $pricePerH;
     }
@@ -458,7 +458,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach ?>
         }
     </script>
-    <?php include_once 'partials/frontEndValidation.php'; ?>
+    <?php include_once '../transport/partials/totalprice.php'; ?>
+    <?php include_once '../transport/partials/DOM.php'; ?>
 </body>
 
 </html>
