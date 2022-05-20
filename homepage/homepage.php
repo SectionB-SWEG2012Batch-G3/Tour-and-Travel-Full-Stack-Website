@@ -4,13 +4,14 @@ $stmt = $pdo->prepare("SELECT * FROM destination LIMIT 6");
 $stmt->execute();
 $destinations = $stmt->fetchAll();
 
-// $stmt = $pdo->prepare("SELECT * FROM car LIMIT 3");
-// $stmt->execute();
-// $cars = $stmt->fetchAll();
+$stmt = $pdo->prepare("SELECT * FROM transport LIMIT 3");
+$stmt->execute();
+$cars = $stmt->fetchAll();
 
 $stmt = $pdo->prepare("SELECT * FROM hotel LIMIT 6");
 $stmt->execute();
 $hotels = $stmt->fetchAll();
+
 
 ?>
 
@@ -173,7 +174,7 @@ $hotels = $stmt->fetchAll();
                                 <p class="alone-card-text">
                                     <?php echo explode('.', $destination['description'])[0] ?>
                                 </p>
-                                <button class="alone-card-btn"><a href="destinations.php?id=<?php echo $destination['id'] ?>&name=<?php echo $destination['RegionName'] ?>">See More</a></button>
+                                <button class="alone-card-btn"><a href="../destination/destinations.php?id=<?php echo $destination['id'] ?>&name=<?php echo $destination['RegionName'] ?>">See More</a></button>
                             </div>
                         </div>
                     </div>
@@ -213,7 +214,7 @@ $hotels = $stmt->fetchAll();
                                         ?>
                                     </span>
                                 </p>
-                                <button class="alone-card-btn"><a href="destination.php?id=<?php echo $hotel['id'] ?>&name=<?php echo $hotel['hotel_name'] ?>">See More</a></button>
+                                <button class="alone-card-btn"><a href="../hotel/hotel.php?id=<?php echo $hotel['id'] ?? '' ?>&name=<?php echo $hotel['hotel_name'] ?? '' ?>">See More</a></button>
                             </div>
                         </div>
                     </div>
@@ -224,52 +225,31 @@ $hotels = $stmt->fetchAll();
         <h1>Choose Car</h1>
 
         <div class="alone-grid">
-            <div class="alone-grid-item scrolle">
-                <div class="alone-card">
-                    <div class="imc">
-                        <img class="alone-card-img" src="transportation/images/car/alone/honda city/1.webp" alt="addis abaab">
+            <?php if (!empty($cars)) : ?>
+                <?php foreach ($cars as $i => $car) : ?>
+                    <?php
+                    $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc LIMIT 1");
+                    $stmt->bindParam(':id', $car['id']);
+                    $stmt->bindParam(':desc', $car['modelName']);
+                    $stmt->execute();
+                    $images = $stmt->fetch();
+                    ?>
+                    <div class="alone-grid-item scrolle">
+                        <div class="alone-card">
+                            <div class="imc">
+                                <img class="alone-card-img" src="../Admin/<?php echo $images['path'] ?? '' ?>" alt="<?php echo $images['description'] ?? '' ?>">
+                            </div>
+                            <div class=" alone-card-content2">
+                                <h2 class="alone-card-header"><?php echo $car['modelName'] ?? '' ?></h2>
+                                <p class="alone-card-text1">
+                                    Price <?php echo $car['price'] ?? 0 ?>"$
+                                </p>
+                                <button class="alone-card-btn"><a href="../transport/car.php?id=<?php echo $car['id'] ?>" ?>See More</a></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="alone-card-content2">
-                        <h2 class="alone-card-header">Honda City</h2>
-                        <p class="alone-card-text1">
-                            Price 100$
-                        </p>
-                        <button class="alone-card-btn"><a href="acar7.html">See More</a></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="alone-grid-item scrolle">
-                <div class="alone-card">
-                    <div class="imc">
-                        <img class="alone-card-img" src="transportation/images/car/family/v8/1.jpg" alt="bahir dar">
-                    </div>
-                    <div class="alone-card-content2">
-                        <h2 class="alone-card-header">V8</h2>
-                        <p class="alone-card-text1">
-                            Price 200$
-                        </p>
-                        <button class="alone-card-btn"><a href="acar22.html">See More</a></button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="alone-grid-item scrolle">
-                <div class="alone-card">
-                    <div class="imc">
-                        <img class="alone-card-img" src="transportation/images/car/group/hyndai/1.webp" alt="afar">
-                    </div>
-                    <div class="alone-card-content2">
-                        <h2 class="alone-card-header">Hyundai</h2>
-                        <p class="alone-card-text1">
-                            Price 125$
-                        </p>
-                        <button class="alone-card-btn"><a href="acar22.html">See More</a></button>
-                    </div>
-                </div>
-            </div>
-
+                <?php endforeach ?>
+            <?php endif ?>
         </div>
 
         <h1>Unforgotable Experiences</h1>

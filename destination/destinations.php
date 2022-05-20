@@ -15,6 +15,11 @@ if (isset($_GET['id'])) {
 if (isset($_GET['name'])) {
 	$regName = $_GET['name'];
 }
+$stmt = $pdo->prepare("SELECT * FROM destination WHERE id = :id");
+$stmt->bindValue(':id', $id);
+$stmt->execute();
+$destination = $stmt->fetch();
+
 $sql = "SELECT places_to_visit.id as id, places_to_visit.title,places_to_visit.description,places_to_visit.mapLink, destination.id as did, destination.RegionName, destination.description as region,destination.image,destination.wikiLink,destination.video FROM places_to_visit INNER JOIN destination ON places_to_visit.region_id = destination.id WHERE places_to_visit.regionName = :regionName && region_id = :region_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([':region_id' => $id, ':regionName' => $regName]);
@@ -218,16 +223,18 @@ $hotels = $stmt->fetchAll();
 
 		<div class="mainParagraph scroll">
 			<p>
-				<?php $places[0]['region'] ?>
+				<?php
+				echo $destination['description']
+				?>
 			<div class="tap">
-				<button class="button"><a class="tap-here" href="<?php $places[0]['wikiLink'] ?>" target="_blank"> Tap Here </a></button> to read More about Addis Ababa.
+				<button class="button"><a class="tap-here" href="<?php $places[0]['wikiLink'] ?? '' ?>" target="_blank"> Tap Here </a></button> to read More about Addis Ababa.
 			</div>
 			</p>
 		</div>
 
 
 
-		<h2 class="scroll">Places To Visit in <?php $places[0]['RegionName'] ?></h2>
+		<h2 class="scroll">Places To Visit in <?php $places[0]['regionName'] ?? '' ?></h2>
 		<div class="alone-grid">
 			<?php if (!empty($places)) : ?>
 				<?php foreach ($places as $i => $place) : ?>
@@ -290,7 +297,7 @@ $hotels = $stmt->fetchAll();
 										?>
 									</span>
 								</p>
-								<button class="alone-card-btn"><a href="hotel.php?id=<?php echo $hotel['id'] ?>&name=<?php echo $hotel['hotel_name'] ?>">See More</a></button>
+								<button class="alone-card-btn"><a href="../hotel/hotel.php?id=<?php echo $hotel['id'] ?>&name=<?php echo $hotel['hotel_name'] ?>">See More</a></button>
 							</div>
 						</div>
 					</div>

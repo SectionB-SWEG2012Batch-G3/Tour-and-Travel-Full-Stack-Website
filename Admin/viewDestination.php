@@ -14,7 +14,6 @@ $places = $stmt2->fetchAll();
 ?>
 <li>
     <a class="active" href="#">Destinations </a>
-
 </li>
 <li><i class='bx bx-chevron-right'></i></li>
 <li><a class="active" href="#"><?php echo $res['RegionName'] ?></a></li>

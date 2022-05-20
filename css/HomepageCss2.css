@@ -492,7 +492,7 @@ h2 {
 .alone-grid {
     display: grid;
     grid-gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(3, minmax(30rem, 1fr));
     align-items: start;
     margin-bottom: 3rem;
     margin-top: 3rem;
