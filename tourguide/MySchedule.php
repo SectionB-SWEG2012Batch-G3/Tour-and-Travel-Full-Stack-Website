@@ -30,6 +30,9 @@ $schedules = $stmt->fetchAll();
 </div>
 </div>
 <article>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary mb-5 me-md-2" href="../homepage">Go to homepage</a>
+    </div>
     <?php if ($schedules) : ?>
         <table class="table table-primary">
             <tdead>

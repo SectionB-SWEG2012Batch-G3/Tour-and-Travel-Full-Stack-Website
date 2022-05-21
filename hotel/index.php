@@ -205,7 +205,7 @@ $hotels = $stmt->fetchAll();
         $stmt = $pdo->prepare("SELECT region_name FROM `hotel` GROUP BY region_name;");
         $stmt->execute();
         $regions = $stmt->fetchAll();
-        echo ($regions[1]['region_name']);
+
         ?>
         <div class="tap">
             <?php if (!empty($regions)) : ?>
