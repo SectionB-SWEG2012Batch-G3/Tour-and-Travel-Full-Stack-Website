@@ -23,12 +23,7 @@
                 }
                 ?>">
                     <label for="name">Full name</label>
-                    <input type="text" name="Fname" class="no-outline" id="name" value="
-                    <?php
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        echo $name ? $name : '';
-                    }
-                    ?>" placeholder="Full Name" maxlength="20" required>
+                    <input type="text" name="Fname" class="no-outline" id="name" value="<?php echo trim($name) ? trim($name) : ''; ?>" placeholder="Full Name" maxlength="30" required>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small><?php echo $nameErr[0] ?? ''; ?></small>
@@ -38,10 +33,9 @@
                         echo $placeErr ? 'error' : 'success';
                     } ?>">
                     <label for="place">Where you are going to go?</label>
-                    <input type="Search" value="
-                    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        echo $place ? $place : "Addis Ababa, Ethiopia";
-                    } ?>" class="no-outline" id="place" name="place" required>
+                    <input type="Search" value="<?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                                    echo !empty($place) ? trim($place) : "Addis Ababa, Ethiopia";
+                                                } ?>" placeholder="Addis Ababa" class="no-outline" id="place" name="place" required>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small><?php echo $placeErr[0] ?? ''; ?></small>
@@ -51,7 +45,7 @@
                         echo $teleErr ? 'error' : 'success';
                     } ?>">
                     <label for="tele">Phone </label>
-                    <input type="tel" id="tele" name="mobile" value="<?php echo $tele ? $tele : '' ?>" required>
+                    <input type="tel" id="tele" name="mobile" placeholder="0911732375/+251911732375" value="<?php echo $tele ? $tele : '' ?>" required>
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small> <?php echo $teleErr[0] ?? ''; ?>

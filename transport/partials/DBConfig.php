@@ -9,6 +9,7 @@ if (isset($_GET['name'])) {
 $stmt = $pdo->prepare("SELECT * FROM transport");
 $stmt->execute();
 $cars = $stmt->fetchAll();
+
 $name = '';
 $place = '';
 $tele = '';

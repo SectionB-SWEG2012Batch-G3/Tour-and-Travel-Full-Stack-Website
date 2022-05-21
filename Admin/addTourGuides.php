@@ -109,11 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         mkdir(dirname($target_file));
         move_uploaded_file($_FILES['photo']['tmp_name'], $target_file);
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':fname', $fname);
         $stmt->bindParam(':lname', $lname);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':age', $age);
         $stmt->bindParam(':gender', $gender);
         $stmt->bindParam(':qualification', $qualification);
@@ -124,7 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':photo', $target_file);
         $stmt->bindParam(':resume', $resume);
         $stmt->execute();
-        $saved = "saved";
+
+        $stmt = $pdo->prepare("INSERT INTO user(email,password,role) VALUES(:email,:pass,:role)");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':pass', $hashedPassword);
+        $stmt->bindParam(':role', 'tourguide');
+        $stmt->execute();
         //echo "<script>alert($saved)</script>";
         header('Location: tourguides.php?active=tourguide');
     }

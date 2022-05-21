@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
-        // header('Location: destinations.php?active=destination');
+        header('Location: destinations.php?active=destination');
     }
 }
+include_once 'includes/header.php';
 include_once 'destPartials/form.php';
+include_once 'includes/footer.php';

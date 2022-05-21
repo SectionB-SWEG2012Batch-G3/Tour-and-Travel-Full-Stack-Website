@@ -1,19 +1,9 @@
 <?php
-#fetching places to visit from places_to_visit DB
-$stmt = $pdo->prepare("SELECT title FROM places_to_visit");
-$stmt->execute();
-$places_to_visit = $stmt->fetchAll();
-
-var_dump($places_to_visit);
-
-#fetching tourguide's data from tourguide DB
-$stmt = $pdo->prepare("SELECT * FROM tourguide");
-$stmt->execute();
-$guides = $stmt->fetchAll();
 #setting time zone
 date_default_timezone_set('Africa/Nairobi');
 
-#accepting data from the user form
+#accepting data from the user 
+
 $name = test_input($_POST['Fname'] ?? '');
 $place = test_input($_POST['place'] ?? '');
 $tele = test_input($_POST['mobile'] ?? '');

@@ -45,9 +45,14 @@ if ($enDate < time()) {
 if (empty($stDateErr) && empty($enDateErr) && empty($carNameErr)) {
     $totalDays = $enDate - $stDate;
     // echo '<br/>' . 'secs ' . $totalDays . '<br/>';
-    $totalDays = (int)($totalDays / 86400) - 1;
+    $totalDays = ceil(($totalDays / 86400));
     //  echo '<br/>' . 'days ' . $totalDays . '<br/>';
     $price = $totalDays * $pricePerH;
+}
+if ($price <= 0) {
+    $stDateErr[] = 'invalid date interval,date gap is less than 1 day';
+    $enDateErr[] = 'invalid date interval';
+    $errors = true;
 }
 #fetching all tourguides schedules data from asigned_tourguide DB
 $stmt = $pdo->prepare("SELECT * FROM assigned_tourguide");

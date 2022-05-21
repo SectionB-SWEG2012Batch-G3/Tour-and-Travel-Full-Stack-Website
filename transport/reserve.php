@@ -1,11 +1,18 @@
 <?php
 include_once '../transport/partials/DBConfig.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    #fetching places to visit from places_to_visit DB
+    $stmt = $pdo->prepare("SELECT title FROM places_to_visit");
+    $stmt->execute();
+    $places_to_visit = $stmt->fetchAll();
+
+    var_dump($places_to_visit);
+
     include_once '../transport/partials/fome_data.php';
     #validating carname
     filter_var($carName, FILTER_SANITIZE_SPECIAL_CHARS);
     if (empty($carName)) {
-        $carNameErr[] = 'Please select tourguide name';
+        $carNameErr[] = 'Please select car model name';
         $errors = true;
     }
     $isExist = false;
@@ -60,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$errors) {
         try {
-            $stmt = $pdo->prepare("INSERT INTO assigned_tourguide(traveller, place, tele, email, start_date, end_date, guide_name, price_per_hour, price, credit_card_num) VALUES (:traveller, :place, :tele, :email, :start_date, :end_date, :guide_name, :price_per_hour ,:price, :credit_card_num)");
+            $stmt = $pdo->prepare("INSERT INTO reserved_cars(traveller_name, place, phone, email, start_date, end_date, car_model, price, total_price, card_num) VALUES (:traveller, :place, :tele, :email, :start_date, :end_date, :guide_name, :price_per_hour ,:price, :credit_card_num)");
             $stmt->execute([
                 ':traveller' => $name,
                 ':place' => $place,
@@ -73,14 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':price' => $price,
                 ':credit_card_num' => $cardNum
             ]);
-            header("Location: tripForm.php?success=true");
+            header("Location: reserve.php?success=true");
         } catch (PDOException $e) {
             echo "PDO exception occurred " . $e->getMessage();
         }
     }
 }
-
-// include_once 'saveAssignedTourGuides.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: hotels.php?active=hotel');
     }
 }
+include_once 'includes/header.php';
 include_once 'hotelPartials/form.php';
+include_once 'includes/footer.php';
 ?>
 

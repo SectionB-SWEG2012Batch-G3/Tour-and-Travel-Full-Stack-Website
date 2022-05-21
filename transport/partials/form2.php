@@ -20,7 +20,7 @@
                                 echo $cardNumErr ? 'error' : 'success';
                             } ?>">
     <label for="credit-card">Credit card number</label>
-    <input type="password" name="credit-card" id="credit-card" value="<?php echo $cardNum ? $cardNum : null ?>" required>
+    <input type="password" name="credit-card" id="credit-card" value="<?php echo $cardNum ? $cardNum : null ?>" placeholder="credit card number" required>
     <i class="fas fa-eye" id="<?php echo $cardNum ? 'on' : 'off' ?>"></i>
     <i class="fas fa-eye-slash" id="off"></i>
     <i class="fas fa-check-circle"></i>

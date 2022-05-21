@@ -10,7 +10,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- My CSS -->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../Admin/styles/style.css">
     <style>
         .modal-body {
             color: #dc3545;
@@ -30,7 +30,7 @@
     <section id="sidebar">
         <a href="#" class="brand">
             <i class='bx bxs-smile'></i>
-            <span class="text">Guide Dashboard</span>
+            <span class="text">User Dashboard</span>
         </a>
         <ul class="side-menu top">
             <li class="<?php echo isset($_GET['active']) ? '' : 'active' ?>">
@@ -39,10 +39,16 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MySchedule' ? 'active' : ''; ?>">
-                <a href="MySchedule.php?active=MySchedule">
+            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MyTourguide' ? 'active' : ''; ?>">
+                <a href="MySchedule.php?active=MyTourguide">
                     <i class='bx bxs-group'></i>
-                    <span class="text">MySchedule</span>
+                    <span class="text">MyTourguide</span>
+                </a>
+            </li>
+            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MyCar' ? 'active' : ''; ?>">
+                <a href="MySchedule.php?active=MyCar">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">MyCar</span>
                 </a>
             </li>
         </ul>

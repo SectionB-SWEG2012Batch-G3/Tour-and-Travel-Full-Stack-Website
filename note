@@ -1,0 +1,10 @@
+check weather the user loggedin or not, if loggedin allow to get into that page else require to login
+check the identity of the user to redirect the user to their perspective dashboard.
+in the authentication process
+-> check the existence of the username or email in the database
+-> verify the hashed password
+-> allow or deny the access
+
+1. saving user username and use_id in the session
+2. saving the navigation history to session
+3. when the user go to the login or register page check if the is already loggedin

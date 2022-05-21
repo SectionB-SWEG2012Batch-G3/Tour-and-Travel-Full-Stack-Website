@@ -1,27 +1,38 @@
 <?php
+session_start();
 include_once '../dbconfig/connection.php';
 include_once '../Admin/validation/test_input.php';
 include_once '../Admin/validation/randomFileCreate.php';
+include_once '../partials/if_loggedin.php';
+include_once '../partials/find_by_username.php';
+include_once '../partials/session_flash.php';
 
 $email = '';
 $password = '';
 
 $emailErr = [];
 $passwordErr = [];
-
-
 $errors = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = test_input($_POST['email'] ?? '');
     $password = test_input($_POST['Password'] ?? '');
 
-    echo '<br/>' . $email . '<br/>' . $password . '<br/>';
-
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :email && password = :pass");
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':pass', $password);
-    $stmt->execute();
-    $emailExist = !empty($stmt->fetch());
+    $user = find_by_username($email);
+    var_dump(password_verify($password, $user['password']));
+    var_dump($user);
+    if ($user && password_verify($password, $user['password'])) {
+        session_regenerate_id();
+        $_SESSION['username'] = $user['email'];
+        $_SESSION['user_id'] = $user['id'];
+        if (isset($_SESSION['from'])) {
+            $to = session_flash('from');
+            header(("Location: http://$to[0]"));
+        }
+        if_loggedin();
+    }
+    echo "<br/>email or passwor error";
+} else {
+    if_loggedin();
 }
 ?>
 <!DOCTYPE html>
@@ -76,18 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <main>
         <div class="login-form">
             <fieldset class="login" style="height: 430px;">
-                <form id="form" action="POST">
+                <form id="form" method="POST">
                     <h1>Login</h1>
                     <div class="input-container">
                         <label for="username">Username or Email</label><br>
-                        <input type="text" id="username" name="Username" placeholder="Username,Email">
+                        <input type="text" id="username" name="email" value="<?php echo $email ?? ''; ?>" placeholder="Username,Email">
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
                         <small></small>
                     </div>
                     <div class="input-container">
                         <label for="password">Password</label><br>
-                        <input type="password" id="password" name="Password" placeholder="password" min="8" max="20">
+                        <input type="password" id="password" name="Password" value="<?php echo $password ?? ''; ?>" placeholder="password" min="8" max="20">
                         <i class="fas fa-eye" id="on"></i>
                         <i class="fas fa-eye-slash" id="off" s></i>
                         <i class="fas fa-check-circle"></i>

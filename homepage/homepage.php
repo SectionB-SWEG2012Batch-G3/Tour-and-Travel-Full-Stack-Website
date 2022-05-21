@@ -41,7 +41,7 @@ $hotels = $stmt->fetchAll();
     <header>
         <div class="top2">
             <div class="logo" style="height: 100px;width: 125px;">
-                <a href="homepage.html">
+                <a href="http://localhost/Tour-and-Travel-Full-Stack-Website/homepage/homepage.php">
                     <svg height="100" width="125">
                         <ellipse cx="62.5" cy="50" rx="55" ry="45" fill="url(#grad2)" />
                         <polygon points="62.5,5 85,50 62.5,95 40,50" style="stroke: rgb(255, 255, 255); fill: rgba(255, 255, 0, 1);" />
@@ -64,7 +64,7 @@ $hotels = $stmt->fetchAll();
             </div>
             <div class="login-container">
                 <button class="blogs"><a href="Travel Blog/Tips.html">Travel Blogs</a></button>
-                <button class="login" style="width:100px;"><a href="tour guide/Profiles/log in.html">Log
+                <button class="login" style="width:100px;"><a href="http://localhost/Tour-and-Travel-Full-Stack-Website/user/log%20in.php">Log
                         In</a></button>
             </div>
             <div class="search-bar-container">

@@ -4,7 +4,7 @@ const password = document.getElementById("password");
 const form = document.getElementById("form");
 
 
-submitBtn.onclick = (e) => {
+submitBtn.onclick = () => {
     validateUsername();
     validatePassword();
     if (validatePassword() && validateUsername()) {
@@ -14,41 +14,6 @@ submitBtn.onclick = (e) => {
     }
 };
 const small = document.querySelectorAll("small");
-submitBtn.addEventListener("click", () => {
-    let Counter = 0;
-    for (let el of small) {
-        if (el.innerHTML.trim() !== '') {
-            Counter++;
-        }
-    }
-    console.log(Counter);
-    if (Counter != 0) {
-        alert("Validation rule is not obeyed");
-    } else {
-        var userEmail = username.value.trim();
-        let flag = false;
-        const Members = JSON.parse(localStorage.getItem("Members")) ? JSON.parse(localStorage.getItem("Members")) : [];
-        for (let data of Members) {
-            console.log(data);
-            if (data.username.trim() == username.value.trim() || data.e_mail.trim() == username.value.trim()) {
-                for (let data of JSON.parse(localStorage.getItem("Members"))) {
-                    if (data.Password.trim() == password.value.trim()) {
-                        flag = true;
-                    }
-                }
-                break;
-            }
-        }
-
-        if (flag) {
-            alert("You are successfully logged in");
-        } else {
-            alert("Username or password mismatch");
-        }
-    }
-});
-
-
 
 function setError(elme, message) {
     const div = elme.parentNode;
@@ -153,72 +118,3 @@ function toggle() {
         pass.type = "text";
     }
 }
-
-
-
-
-/*
-		btn.onclick = ()=>{
-			for(let key in localStorage){
-				if(localStorage.getItem(key))
-				console.log(`${key} : ${localStorage.getItem(key)}`);
-			}
-		};
-	
-
-*/
-
-
-/*
-search the exisence of the key in the local storage and check its match with the password
-if exists the acount is already exists
-log in success and failed
-
-window.onload = chekcInput;
-pass.onfocus = chekcInput;
-pass.onkeyup = chekcInput;
-for(let elem of eyeSlashes){
-    elem.addEventListener("click",toggle);
-}
-
-for(let elem of eyes){
-    elem.addEventListener("click",toggle);
-}
-// access all the input password elements and eye
-function chekcInput(){
-    for(let inpt of passInputs){
-        if(inpt.value.trim() === ''){
-            eye.id = "off";
-            eye2.setAttribute("id", "off");
-        }else{
-            eye.id = "on";
-            eye2.id = "off";
-        }
-    }
-}
-/*
-(event)=>{
-    var passwordIN = event.target.value.trim();
-    console.log(passwordIN);
-    console.log(pass.value);
-    console.log(passwordIN === '');
-    if(pass.value.trim() === ''){
-        eye.id = "off";
-        eye2.setAttribute("id", "off");
-    }else{
-        eye.id = "on";
-        eye2.id = "off";
-    }
-};
-for(let i in eye){
-    eye[i].addEventListener("click",toggle);
-}
-for(let i in eye2){
-    eye2[i].addEventListener("click",toggle);
-}
-
-
-const eye = document.querySelectorAll(".fa-eye");
-const eye2 =document.querySelectorAll(".fa-eye-slash");
-
-*/

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../dbconfig/connection.php';
 include_once '../Admin/validation/test_input.php';
 include_once '../Admin/validation/randomFileCreate.php';
@@ -20,9 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $emailExist = !empty($stmt->fetch());
+    $user = ($stmt->fetch());
     // echo '<br/>' . $emailExist;
-    if ($emailExist) {
+
+    var_dump($user);
+    if ($user) {
         $emailErr[] = 'Email is already registered, please login';
     }
     filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -45,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $passwordErr[] = 'Password is too long, make it less than 30';
         $errors = true;
     }
-    if (strlen($password) < 10) {
+    if (strlen($password) < 8) {
         $passwordErr[] = 'password is too short, make it at least 8';
         $errors = true;
     }
@@ -54,15 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors = true;
     }
 
-    $password = password_hash($password, PASSWORD_BCRYPT);
-    echo $password;
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    echo $hashedPassword;
 
     if (!$errors) {
         $stmt = $pdo->prepare("INSERT INTO user(email,password) VALUES(:email,:pass)");
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':pass', $password);
+        $stmt->bindParam(':pass', $hashedPassword);
         $stmt->execute();
-        header("Location: sign up.php");
+        // header("Location: log in.php");
     }
 }
 ?>
@@ -357,7 +360,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     } ?>
                        ">
                         <label for="email">Email</label><br>
-                        <input type="text" id="email" name="email" placeholder="Email">
+                        <input type="text" id="email" name="email" value="<?php echo $email ?? ''; ?>" placeholder="Email">
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
                         <small><?php echo $emailErr[0] ?? '' ?></small>
@@ -369,7 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     } ?>
                     ">
                         <label for="password">Password</label><br>
-                        <input type="password" id="password" name="Password" placeholder="password">
+                        <input type="password" id="password" name="Password" value="<?php echo $password ?? ''; ?>" placeholder="password">
                         <i class="fas fa-eye" id="on"></i>
                         <i class="fas fa-eye-slash" id="off" s></i>
                         <i class="fas fa-check-circle"></i>
@@ -383,7 +386,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     } ?>
                     ">
                         <label for="confirm">Confirm password</label><br>
-                        <input type="password" id="confirm" name="confirm" placeholder="confirm password">
+                        <input type="password" id="confirm" name="confirm" value="<?php echo $cpassword ?? ''; ?>" placeholder="confirm password">
                         <i class="eye3 fas fa-eye" id="on"></i>
                         <i class="eye4 fas fa-eye-slash" id="off"></i>
                         <i class="fas fa-check-circle"></i>

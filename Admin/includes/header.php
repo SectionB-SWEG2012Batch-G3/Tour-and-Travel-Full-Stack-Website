@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once '../partials/require_login.php';
+require_once '../partials/require_previlage_of.php';
+$role = require_loggedin();
+require_previlage_of($role, 'admin');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,6 +78,20 @@
                     <span class="text">Tour Guides</span>
                 </a>
             </li>
+
+            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MySchedule' ? 'active' : ''; ?>">
+                <a href="TourguideSchedule.php?active=MySchedule">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Tour Guide Schedule</span>
+                </a>
+            </li>
+
+            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'cars' ? 'active' : ''; ?>">
+                <a href="reservedCars.php?active=cars">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Reserced Cars</span>
+                </a>
+            </li>
         </ul>
         <ul class="side-menu">
             <li>
@@ -78,7 +101,7 @@
                 </a>
             </li>
             <li>
-                <a href="logout.php" class="logout">
+                <a href="../partials/logout.php" class="logout">
                     <i class='bx bxs-log-out-circle'></i>
                     <span class="text">Logout</span>
                 </a>
