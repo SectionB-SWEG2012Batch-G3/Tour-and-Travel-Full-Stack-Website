@@ -11,7 +11,7 @@ function if_loggedin()
         if ($user_role === 'admin') {
             $to = "http://localhost/Tour-and-Travel-Full-Stack-Website/Admin";
         } else if ($user_role === 'user') {
-            $to = "http://localhost/Tour-and-Travel-Full-Stack-Website/user/MySchedule.php";
+            $to = "http://localhost/Tour-and-Travel-Full-Stack-Website/user";
         } else if ($user_role === 'tourguide') {
             $to = "http://localhost/Tour-and-Travel-Full-Stack-Website/tourguide/MySchedule.php";
         }

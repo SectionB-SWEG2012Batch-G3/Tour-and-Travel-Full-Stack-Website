@@ -43,9 +43,8 @@ if ($enDate < time()) {
 
 //calculating the total price
 if (empty($stDateErr) && empty($enDateErr) && empty($carNameErr)) {
-    $totalDays = $enDate - $stDate;
+    $totalDays = date("d", $enDate) - date("d", $stDate);
     // echo '<br/>' . 'secs ' . $totalDays . '<br/>';
-    $totalDays = ceil(($totalDays / 86400));
     //  echo '<br/>' . 'days ' . $totalDays . '<br/>';
     $price = $totalDays * $pricePerH;
 }

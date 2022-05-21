@@ -58,5 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 include_once 'includes/header.php';
+?>
+<li>
+    <a class="active" href="#">Edit destination</a>
+</li>
+</ul>
+</div>
+</div>
+<?php
 include_once 'destPartials/form.php';
-include_once 'includes/footer.php';
+include_once 'includes/header.php';
+?>

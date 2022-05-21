@@ -34,19 +34,19 @@
         </a>
         <ul class="side-menu top">
             <li class="<?php echo isset($_GET['active']) ? '' : 'active' ?>">
-                <a href="MySchedule.php">
+                <a href="index.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MyTourguide' ? 'active' : ''; ?>">
-                <a href="MySchedule.php?active=MyTourguide">
+                <a href="index.php?active=MyTourguide">
                     <i class='bx bxs-group'></i>
                     <span class="text">MyTourguide</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MyCar' ? 'active' : ''; ?>">
-                <a href="MySchedule.php?active=MyCar">
+                <a href="MyCar.php?active=MyCar">
                     <i class='bx bxs-group'></i>
                     <span class="text">MyCar</span>
                 </a>

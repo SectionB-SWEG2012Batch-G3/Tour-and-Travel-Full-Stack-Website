@@ -1,4 +1,4 @@
-<body style="background-image: url('images/front.jpg');">
+<body style="background-image: url('http://localhost/Tour-and-Travel-Full-Stack-Website/transport/images/front.jpg');">
     <section class="trip-form-container">
         <?php if ($errors && $scheduleErr) : ?>
             <script>

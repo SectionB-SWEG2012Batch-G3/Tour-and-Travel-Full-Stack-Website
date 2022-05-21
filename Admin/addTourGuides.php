@@ -135,25 +135,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: tourguides.php?active=tourguide');
     }
 }
+include_once 'includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Add Tour Guide</title>
-    <style>
-        form.form {
-            max-width: 500px;
-            margin: 100px 0 0 100px;
-        }
-    </style>
-</head>
-
-<body>
+<li>
+    <a class="active" href="#">Add tourguide</a>
+</li>
+</ul>
+</div>
+</div>
+<article>
     <button class="btn btn-primary me-md-2" type="submit">Add Tour Guide</button>
     <form method="POST" class="form" enctype="multipart/form-data">
         <?php if (!empty($errors)) : ?>
@@ -230,6 +221,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button class="btn btn-primary me-md-2" type="submit">Save</button>
         </div>
     </form>
-</body>
+</article>
 
-</html>
+<?php
+include_once 'includes/header.php';
+?>

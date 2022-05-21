@@ -1,6 +1,4 @@
 <?php
-include_once '../dbconfig/connection.php';
-include_once '../Admin/validation/test_input.php';
 
 $nameof = '';
 if (isset($_GET['name'])) {
