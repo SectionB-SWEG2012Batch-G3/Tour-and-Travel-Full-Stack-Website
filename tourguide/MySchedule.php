@@ -2,7 +2,9 @@
 session_start();
 require_once '../partials/require_login.php';
 require_once '../partials/current_user.php';
-require_loggedin();
+require_once '../partials/require_previlage_of.php';
+$user_role = require_loggedin();
+require_previlage_of($user_role, 'tourguide');
 
 include_once 'includes/header.php';
 include_once '../dbconfig/connection.php';

@@ -12,14 +12,37 @@ $password = '';
 
 $emailErr = [];
 $passwordErr = [];
-$errors = false;
+$errors = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = test_input($_POST['email'] ?? '');
     $password = test_input($_POST['Password'] ?? '');
 
+    filter_var($email, FILTER_SANITIZE_EMAIL);
+    filter_var($email, FILTER_SANITIZE_SPECIAL_CHARS);
+    filter_var($password, FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr[] = 'Email is not valid';
+    }
+    if (strlen($email) > 30) {
+        $emailErr[] = 'Password is too long, make it less than 30';
+        $errors = true;
+    }
+    if (strlen($email) < 10) {
+        $emailErr[] = 'Email is too short, make it more than 10';
+        $errors = true;
+    }
+    if (strlen($password) > 30) {
+        $passwordErr[] = 'Password is too long, make it less than 30';
+        $errors = true;
+    }
+    if (strlen($password) < 8) {
+        $passwordErr[] = 'password is too short, make it at least 8';
+        $errors = true;
+    }
+
     $user = find_by_username($email);
-    var_dump(password_verify($password, $user['password']));
-    var_dump($user);
+
     if ($user && password_verify($password, $user['password'])) {
         session_regenerate_id();
         $_SESSION['username'] = $user['email'];
@@ -29,8 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header(("Location: http://$to[0]"));
         }
         if_loggedin();
+    } else {
+        $errors = 'Invalid Email or Password';
     }
-    echo "<br/>email or passwor error";
 } else {
     if_loggedin();
 }
@@ -86,17 +110,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
     <main>
         <div class="login-form">
+            <?php if (!empty($errors)) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $errors ?>
+                </div>
+            <?php endif ?>
             <fieldset class="login" style="height: 430px;">
                 <form id="form" method="POST">
                     <h1>Login</h1>
-                    <div class="input-container">
-                        <label for="username">Username or Email</label><br>
+                    <div class="input-container <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                                    echo $emailErr ? 'error' : 'success';
+                                                } ?>">
+                        <label for=" username">Username or Email</label><br>
                         <input type="text" id="username" name="email" value="<?php echo $email ?? ''; ?>" placeholder="Username,Email">
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
                         <small></small>
                     </div>
-                    <div class="input-container">
+                    <div class="input-container <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                                    echo $emailErr ? 'error' : 'success';
+                                                } ?>">
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="Password" value="<?php echo $password ?? ''; ?>" placeholder="password" min="8" max="20">
                         <i class="fas fa-eye" id="on"></i>

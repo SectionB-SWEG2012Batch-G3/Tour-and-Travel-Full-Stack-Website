@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = ($stmt->fetch());
     // echo '<br/>' . $emailExist;
 
-    var_dump($user);
     if ($user) {
         $emailErr[] = 'Email is already registered, please login';
     }
