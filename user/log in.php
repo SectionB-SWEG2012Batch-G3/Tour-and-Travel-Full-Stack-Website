@@ -119,16 +119,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form id="form" method="POST">
                     <h1>Login</h1>
                     <div class="input-container <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                                    echo $emailErr ? 'error' : 'success';
+                                                    echo $errors ? 'error' : 'success';
                                                 } ?>">
                         <label for=" username">Username or Email</label><br>
                         <input type="text" id="username" name="email" value="<?php echo $email ?? ''; ?>" placeholder="Username,Email">
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
-                        <small></small>
+                        <small><?php echo $emailErr[0] ?? '' ?></small>
                     </div>
                     <div class="input-container <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                                    echo $emailErr ? 'error' : 'success';
+                                                    echo $errors ? 'error' : 'success';
                                                 } ?>">
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="Password" value="<?php echo $password ?? ''; ?>" placeholder="password" min="8" max="20">
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fas fa-eye-slash" id="off" s></i>
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
-                        <small></small>
+                        <small><?php echo $passwordErr[0] ?? '' ?></small>
                     </div>
                     <div class="submit">
                         <input type="submit" name="submit" value="Signin" id="submit">

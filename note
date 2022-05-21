@@ -8,3 +8,5 @@ in the authentication process
 1. saving user username and use_id in the session
 2. saving the navigation history to session
 3. when the user go to the login or register page check if the is already loggedin
+
+Finally it will be better if the first pages to be visited are renamed to index
