@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="submit" name="submit" value="Signin" id="submit">
                     </div>
                     <div>
-                        <a class="forgot-psw" href="Forgot password.html">Forgot password?</a><br><br>
+                        <a class="forgot-psw" href="Forgot password.php">Forgot password?</a><br><br>
                         <span>Have no acount?</span>
                         <button><a href="sign up.php">Create acount</a></button>
                     </div>

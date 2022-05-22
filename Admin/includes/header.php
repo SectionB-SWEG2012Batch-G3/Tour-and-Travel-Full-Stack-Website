@@ -137,7 +137,7 @@ require_previlage_of($role, 'admin');
         <!-- NAVBAR -->
 
         <!-- MAIN -->
-        <main>
+        <main style="background-image: url('../')">
             <div class="head-title">
                 <div class="left">
                     <h1>Dashboard</h1>

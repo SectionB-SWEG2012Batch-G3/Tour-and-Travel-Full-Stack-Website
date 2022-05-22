@@ -3,7 +3,6 @@
 include_once 'hotelPartials/dbOperation.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include_once 'hotelPartials/form_data.php';
-
     // echo '<br/>' . $regionName . '<br/>' . $hotelName . '<br/>' . $minPrice . '<br/>' . $image['name'] . '<br/>' . $maxPrice . '<br/>' . $rating . '<br/>';
 
     if (!empty($image['name'])) {
@@ -16,21 +15,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':desc', $oldhotelName);
         $stmt->execute();
 
-        $sql = "UPDATE hotel SET region_name = :rname, hotel_name = :hname ,min_price = :minp , max_price = :maxp, rating = :rate, image = :img WHERE  id = :id";
+        $sql = "UPDATE hotel SET region_name = :rname, hotel_name = :hname ,min_price = :minp , max_price = :maxp, rating = :rate, image = :img, link = :link WHERE  id = :id";
         if (!is_dir('uploads/images/')) {
             mkdir('uploads/images/');
         }
         if (!empty($image['name'])) {
-            unlink($oldPath);
-            rmdir(dirname($oldPath));
+            if ($oldPath) {
+                unlink($oldPath);
+                rmdir(dirname($oldPath));
+            }
             $isCreated =  mkdir(dirname($imagePath));
             // mkdir(dirname('uploads/images/'.randomString(8).'/'.$image['name']));
             // echo $isCreated;
             move_uploaded_file($image['tmp_name'], $imagePath);
             $stmt = $pdo->prepare("UPDATE image SET description = :newDesc, path = :newpath WHERE imageFor = :id && description = :desc && path = :oldpath");
             $stmt->bindParam(':newDesc', $hotelName);
-            $stmt->bindParam(':id', $id);
             $stmt->bindParam(':newpath', $imagePath);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':desc', $oldhotelName);
             $stmt->bindParam(':oldpath', $oldPath);
             $stmt->execute();
         }

@@ -1,13 +1,13 @@
 <?php
-	include_once 'includes/header.php';
+include_once 'includes/header.php';
 ?>
-			<li>
-                            <a class="active" href="#">Home</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-			<ul class="box-info">
+<li>
+	<a class="active" href="#">Home</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- <ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -119,8 +119,8 @@
 							<i class='bx bx-dots-vertical-rounded' ></i>
 						</li>
 					</ul>
-				</div>
-			</div>
+				</div> -->
+</div>
 <?php
-	include_once 'includes/footer.php';
+include_once 'includes/footer.php';
 ?>

@@ -20,7 +20,7 @@ $hotels = $stmt->fetchAll();
     <meta name="keywords" content="hotel,rooms,bar and resturant">
     <meta name="author" content="Hamere Endale">
     <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-    <link rel="stylesheet" href="css/hotelsCSS.css">
+    <link rel="stylesheet" href="css/hotels.css">
     <link rel="stylesheet" href="../css/footerCSS.css">
     <link rel="stylesheet" href="../css/navStyle.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
@@ -38,121 +38,7 @@ $hotels = $stmt->fetchAll();
 
 
 <body id="body">
-    <header>
-        <div class="top2">
-            <div class="logo" style="height: 100px;width: 125px;">
-                <a href="../homepage.html">
-                    <svg height="100" width="125">
-                        <ellipse cx="62.5" cy="50" rx="55" ry="45" fill="url(#grad2)" />
-                        <polygon points="62.5,5 85,50 62.5,95 40,50" style="stroke: rgb(255, 255, 255); fill: rgba(255, 255, 0, 1);" />
-                        <text fill="#000000" font-size="25" font-family="Verdana" x="20" y="60">4</text>
-                        <text fill="#000000" font-size="25" font-family="Verdana" x="52.5" y="60">H</text>
-                        <text fill="#000000" font-size="25" font-family="Verdana" x="90" y="60">F</text>
-                        <text fill="#000000" font-size="13" font-family="Verdana" x="20" y="80">Tour &amp; Travel</text>
-
-                        <defs>
-                            <linearGradient id="grad2" x1="0%" y1="0%" x2="50%" y2="0%" x3="51%" y3="0%" x4="100%" y4="100%">
-                                <stop offset="0%" style="stop-color: rgb(0, 255, 0);stop-opacity: 1;" />
-                                <stop offset="100%" style="stop-color: rgb(255, 255, 0);stop-opacity: 1;" />
-                                <stop offset="100%" style="stop-color: rgb(255, 255, 0);stop-opacity: 1;" />
-                                <stop offset="200%" style="stop-color: rgb(255, 0, 0); stop-opacity: 1;" />
-                            </linearGradient>
-                        </defs>
-
-                    </svg>
-                </a>
-            </div>
-            <div class="login-container">
-                <button class="blogs"><a href="../Tips.html">Travel Blogs</a></button>
-                <button class="login" style="width:100px;"><a href="../tour guide/Profiles/log in.html">Log
-                        In</a></button>
-            </div>
-            <div class="search-bar-container">
-                <div class="input-container">
-                    <input class="searchBar" type="Search" name="searchBar" value="" placeholder="Where to go... " list="ethiopia">
-                    <a href="#" class="search-icon">
-                        <i class="fa fa-2x fa-search" aria-hidden="true"></i>
-                    </a>
-                </div>
-
-                <div class="autocom-box" style="margin-left: 10px;">
-                    <ul>
-                        <li></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <label for="fa-bars-label" class="fa-bars-label" onclick="changeFont()">
-                <i class="fas fa-bars"></i>
-            </label>
-            <input type="checkbox" id="fa-bars-label">
-            <ul>
-                <li><a href="../homepage.html">Home</a></li>
-                <li>
-                    <label for="dest-label" class="show">Destinations+</label>
-                    <a href="../destination/destinations.html">Destinations</a>
-                    <input type="checkbox" id="dest-label">
-                    <ul>
-                        <li>
-                            <label for="addis-label" style="margin-left: 50px;" class="show">Addis A.+</label>
-                            <a href="../destination/addisababa/addisababa.html">Addis Ababa</a>
-                            <input type="checkbox" id="addis-label">
-                            <ul>
-                                <li><a href="../destination/addisababa/mountentoto.html">Entoto</a></li>
-                                <li><a href="../destination/addisababa/unitypark.html">Unity Park</a></li>
-                                <li><a href="../destination/addisababa/friendshippark.html">Friendship Park</a></li>
-                                <li><a href="../destination/addisababa/zomamuseum.html">Zoma Museum</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <label for="Bahir-label" style="margin-left: 50px;" class="show">Bahirdar+</label>
-                            <a href="../destination/bahirdar/bahirdar.html">Bahirdar</a>
-                            <input type="checkbox" id="Bahir-label">
-                            <ul>
-                                <li><a href="../destination/bahirdar/laketana.html">Lake Tana</a></li>
-                                <li><a href="../destination/bahirdar/azwamariam.html">Azwa Mariam</a></li>
-
-                            </ul>
-                        </li>
-
-
-                        <li><a href="../destination/harar/harar.html">Harar</a> </li>
-                        <li><a href="../destination/gonder/gonder.html">Gonder</a></li>
-                        <li><a href="../destination/afar/afar.html">Afar</a></li>
-                        <li><a href="../destination/jinka/jinka.html">Jinka</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="hotel-label" class="show">Hotel+</label>
-                    <a href="hotel reservation.html">Hotel Reservation</a>
-                    <input type="checkbox" id="hotel-label">
-                    <ul>
-                        <li><a href="Sheraton Addis/Sheraton Addis.html">Sheraton</a></li>
-                        <li><a href="Skylight/Skylight.html">Skylight</a></li>
-                        <li><a href="Golden Tulip/Golden Tulip.html">Golden Tulip</a></li>
-                        <li><a href="Hyatt/Hyatt.html">Hyatt</a></li>
-                        <li><a href="Marriott/Marriott.html">Mariott</a></li>
-                        <li><a href="Emerald/Emerald Lodge.html">Emerald</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="transport-label" class="show">Transport+</label>
-                    <a href="../transportation/transport.html">Transport</a>
-                    <input type="checkbox" id="transport-label">
-                    <ul>
-                        <li><a href="../transportation/transport.html#forfamily">For family</a></li>
-                        <li><a href="../transportation/transport.html#foralone">For Alone</a></li>
-                        <li><a href="../transportation/transport.html#forgroup">For Group</a></li>
-                    </ul>
-                </li>
-                <li class="tour-guide"><a href="../tour guide/tourguide.html">Tour Guide</a></li>
-                <li class="Experience"><a href="#">Experience</a></li>
-                <li class="About-us"><a href="../About us/About us.html">About us</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <?php include_once '../partials/navbar.php' ?>
     <main>
         <h1>Hotel Reservation</h1>
 

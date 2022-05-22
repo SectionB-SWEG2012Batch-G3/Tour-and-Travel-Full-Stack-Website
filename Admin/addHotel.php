@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $sql = "INSERT INTO hotel(region_name, hotel_name,min_price, max_price, rating, image) VALUES(:rname,:hname,:minp,:maxp,:rate,:img)";
+        $sql = "INSERT INTO hotel(region_name, hotel_name,min_price, max_price, rating, image,link) VALUES(:rname,:hname,:minp,:maxp,:rate,:img,:link)";
         if (!is_dir('uploads/images/')) {
             mkdir('uploads/images/');
         }

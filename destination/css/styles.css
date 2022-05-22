@@ -247,7 +247,7 @@ h2 {
     display: grid;
     grid-gap: 3rem;
     grid-template-columns: repeat(3, minmax(30rem, 1fr));
-    align-items: start;
+    align-items: center;
     margin: 3rem;
 }
 

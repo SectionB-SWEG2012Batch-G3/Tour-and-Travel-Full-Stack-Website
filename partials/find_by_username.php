@@ -1,4 +1,5 @@
 <?php
+
 function find_by_username($username)
 {
     require_once '../dbconfig/connection.php';

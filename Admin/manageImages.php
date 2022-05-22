@@ -30,62 +30,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([':for' => $id, ':desc' => $title]);
 $images = $stmt->fetchAll();
 
-
-// $image_names =  [];
-// $errors = [];
-// $tmp_names = [];
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $image_names =  []; 
-//     $tmp_names = [];
-//     $files = $_FILES['image'];
-
-//     if (!empty($files)) {
-//         $image_names = $files['name'];
-//         $tmp_names = $files['tmp_name'];
-//         $sizes = $files['size'];
-//         foreach ($image_names as $i => $name) {
-//             $target_file = 'images/' . randomString(8) . '/' . $name;
-//             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-//             if (
-//                 $imageFileType === 'jpg' || $imageFileType === 'png' || $imageFileType === "jpeg"
-//                 || $imageFileType === "gif"
-//             ) {
-//             } else {
-//                 array_push($errors, 'Image file extension name must be in [png,jpg,jpeg,gif]');
-//             }
-//         }
-//         foreach ($sizes as $i => $size) {
-//             if ($size > 20000000) {
-//                 array_push($errors, "image $i has size larger than 20MB");
-//             }
-//         }
-//     } else {
-//         array_push($errors, 'Image is not choosen');
-//     }
-
-//     if (empty($errors)) {
-//         $sql2 = 'INSERT INTO image(path,description,imageFor) VALUES(:path,:desc,:for)';
-//         if (!is_dir('uploads/images/')) {
-//             mkdir('uploads/images/');
-//         }
-//         foreach ($image_names as $i => $name) {
-//             $target_file = 'uploads/images/' . $title . randomString(8) . '/' . $name;
-//             // echo '<br/>'.$target_file.'<br/>';
-//             $isCreated = mkdir(dirname($target_file));
-//             // echo '<br/>'.$isCreated.'<br/>';
-//             move_uploaded_file($tmp_names[$i], $target_file);
-//             $query = $pdo->prepare($sql2);
-//             $query->bindParam(':path', $target_file);
-//             $query->bindParam(':desc', $title);
-//             $query->bindParam(':for', $id);
-//             $query->execute();
-//         }
-
-//         header("Location: manageHotelImages.php?active=destination&name=$title");
-//     }
-// }
-
 ?>
 <li><i class='bx bx-chevron-right'></i></li>
 <li><a class="active" href="#"><?php echo  $title ?> Images </a></li>
@@ -101,7 +45,7 @@ $images = $stmt->fetchAll();
                         <img height="200" width="220" src="<?php echo $image['path'] ?>" class="card-img-top" alt="<?php echo $image['description'] ?>">
                         <div class="card-body" style="display:inline-block">
                             <h5 class="card-title"><?php echo $image['description'] ?></h5>
-                            <p class="card-text" style="display:inline-block">Some quick example text to build</p>
+                            <p class="card-text" style="display:inline-block"></p>
 
                             <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModala<?php echo $i ?>">
                                 Change
