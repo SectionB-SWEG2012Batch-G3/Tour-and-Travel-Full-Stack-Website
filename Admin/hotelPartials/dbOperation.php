@@ -7,10 +7,7 @@ try {
 }
 include_once 'validation/test_input.php';
 include_once 'validation/randomFileCreate.php';
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
+
 
 $stmt = $pdo->prepare("SELECT * FROM hotel WHERE id = :id");
 $stmt->execute([':id' => $id]);

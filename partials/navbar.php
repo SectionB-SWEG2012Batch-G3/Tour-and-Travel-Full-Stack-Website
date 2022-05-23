@@ -12,7 +12,6 @@
     $stmt->execute();
     $hotels = $stmt->fetchAll();
     ?>
-
   <header>
       <div class="top2">
           <div class="logo" style="height: 100px;width: 125px;">
@@ -53,6 +52,7 @@
                       <li></li>
                   </ul>
               </div>
+              <?php include_once '../partials/search_bar.php' ?>
           </div>
       </div>
       <nav>

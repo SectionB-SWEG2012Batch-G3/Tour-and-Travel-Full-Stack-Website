@@ -5,7 +5,7 @@ include_once '../dbconfig/connection.php';
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/transport.css">
+    <link rel="stylesheet" type="text/css" href="css/transports.css">
     <link rel="stylesheet" href="../css/footerCSS.css">
     <link rel="stylesheet" href="../css/navStyle.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
@@ -26,11 +26,11 @@ include_once '../dbconfig/connection.php';
 
         <h2 id="flight" style="text-align: center; margin-bottom: 30px;">Ethiopian arlines</h2>
 
-        <div class="airlines alone-grid">
+        <div class="airlines alone-grids">
             <div class="flex">
                 <div class="flex-img">
 
-                    <img src="images/car/a4.jpg" alt="Ethiopian airlines" class="airline-img" style="width: 20vw;">
+                    <img src="images/a4.jpg" alt="Ethiopian airlines" class="airline-img" style="width: 20vw;">
                 </div>
 
                 <div class="flex-text">

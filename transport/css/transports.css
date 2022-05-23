@@ -95,18 +95,31 @@ h3 {
 }
 
 .alone-grid {
+    display: flex;
+    /* grid-gap: 2rem; */
+    gap: 2rem;
+    /* grid-template-columns: repeat(4, minmax(20rem, 1fr)); */
+    justify-content: center;
+    align-items: center;
+}
+
+.airlines.alone-grids {
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    align-items: start;
+    justify-content: center;
+    align-items: center;
 }
 
 .alone-grid-item {
     border: 5px ridge rgba(106, 129, 96, 0.3);
+    width: 22%;
     border-radius: 50px;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    justify-items: center;
     transition: 0.2s;
 }
 

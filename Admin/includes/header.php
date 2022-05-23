@@ -2,9 +2,11 @@
 session_start();
 require_once '../partials/require_login.php';
 require_once '../partials/require_previlage_of.php';
+require_once '../partials/find_by_username.php';
+require_once '../partials/current_user.php';
 $role = require_loggedin();
 require_previlage_of($role, 'admin');
-
+$username = current_user();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@ require_previlage_of($role, 'admin');
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- My CSS -->
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
     <style>
         .modal-body {
             color: #dc3545;
@@ -86,8 +89,8 @@ require_previlage_of($role, 'admin');
                 </a>
             </li>
 
-            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'cars' ? 'active' : ''; ?>">
-                <a href="reservedCars.php?active=cars">
+            <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'reservedCars' ? 'active' : ''; ?>">
+                <a href="reservedCars.php?active=reservedCars">
                     <i class='bx bxs-group'></i>
                     <span class="text">Reserced Cars</span>
                 </a>
@@ -118,20 +121,22 @@ require_previlage_of($role, 'admin');
         <nav>
             <i class='bx bx-menu'></i>
             <a href="#" class="nav-link">Categories</a>
-            <form action="#">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>?active=<?php echo $_GET['active'] ?>">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
+                    <input type="search" id="search" name="search" placeholder="Search...">
+                    <input type="hidden" id="search" name="active" value="<?php echo $_GET['active'] ?>" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>
+
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
-            <a href="#" class="notification">
+            <!-- <a href="#" class="notification">
                 <i class='bx bxs-bell'></i>
                 <span class="num">8</span>
-            </a>
-            <a href="#" class="profile">
-                <img src="img/people.png">
+            </a> -->
+            <a href="#" title="Profile" class="profile" style="border: 1px solid;line-height:28px; background-color:red;color:white; width:30px; height:30px; text-align:center; border-radius:50%; font-size:24px">
+                A
             </a>
         </nav>
         <!-- NAVBAR -->

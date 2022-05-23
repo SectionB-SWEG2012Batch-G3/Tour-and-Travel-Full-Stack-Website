@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/footerCSS.css">
     <link rel="stylesheet" href="../css/HomepageCss2.css">
     <!-- <link rel="stylesheet" href="homepage2.css"> -->
-    <script defer src="../JS/search-boxScript.js"></script>
+    <!-- <script defer src="../JS/search-boxScript.js"></script> -->
     <script defer src="../JS/home.js"></script>
     <script defer src="NavScript.js"></script>
 </head>

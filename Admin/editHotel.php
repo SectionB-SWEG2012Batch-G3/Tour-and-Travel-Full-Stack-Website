@@ -1,10 +1,15 @@
 
 <?php
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
 include_once 'hotelPartials/dbOperation.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include_once 'hotelPartials/form_data.php';
     // echo '<br/>' . $regionName . '<br/>' . $hotelName . '<br/>' . $minPrice . '<br/>' . $image['name'] . '<br/>' . $maxPrice . '<br/>' . $rating . '<br/>';
 
+    echo '<br/>' . $id;
     if (!empty($image['name'])) {
         $imagePath = 'uploads/images/' . randomString(8) . '/' . $image['name'];
     }
@@ -41,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         // echo '<br/>' . $pdo->lastInsertId();
-        header('Location: hotels.php?active=hotel');
+        // header('Location: hotels.php?active=hotel');
     }
 }
 include_once 'includes/header.php';
