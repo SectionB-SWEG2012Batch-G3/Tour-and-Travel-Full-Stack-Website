@@ -121,10 +121,12 @@ $username = current_user();
         <nav>
             <i class='bx bx-menu'></i>
             <a href="#" class="nav-link">Categories</a>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>?active=<?php echo $_GET['active'] ?>">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>?active=<?php echo $_GET['active'] ?? "" ?>">
                 <div class="form-input">
                     <input type="search" id="search" name="search" placeholder="Search...">
-                    <input type="hidden" id="search" name="active" value="<?php echo $_GET['active'] ?>" placeholder="Search...">
+                    <input type="hidden" id="search" name="active" placeholder="Search...">
+                    <!-- value="<?php // echo $_GET['active'] 
+                                ?>" -->
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>

@@ -1,15 +1,3 @@
-<?php
-try {
-    include_once '../dbconfig/connection.php';
-} catch (PDOException $e) {
-    echo 'connection exception ' . $e->getMessage();
-}
-
-$stmt = $pdo->prepare("SELECT * FROM hotel");
-$stmt->execute();
-$hotels = $stmt->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -38,7 +26,17 @@ $hotels = $stmt->fetchAll();
 
 
 <body id="body">
-    <?php include_once '../partials/navbar.php' ?>
+    <?php include_once '../partials/navbar.php';
+    try {
+        include_once '../dbconfig/connection.php';
+    } catch (PDOException $e) {
+        echo 'connection exception ' . $e->getMessage();
+    }
+
+    $stmt = $pdo->prepare("SELECT * FROM hotel");
+    $stmt->execute();
+    $hotels = $stmt->fetchAll();
+    ?>
     <main>
         <h1>Hotel Reservation</h1>
 
