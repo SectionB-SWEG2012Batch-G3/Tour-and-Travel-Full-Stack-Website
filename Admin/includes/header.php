@@ -139,6 +139,9 @@ $user = find_by_username($username);
                 <i class='bx bxs-bell'></i>
                 <span class="num">8</span>
             </a> -->
+            <div class="notificationd">
+                <a class="btn btn-success mx-3" style="color: white;" href="../homepage">Homepage</a>
+            </div>
             <?php if ($user['profile']) : ?>
                 <a href="#" title="Profile" class="profile">
                     <img src=" <?php echo $user['profile'] ?? '' ?>" alt="">

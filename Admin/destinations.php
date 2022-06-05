@@ -49,7 +49,7 @@ if (isset($_GET['search'])) {
 
               <td scope="row"><?php echo explode('.', $destination['description'])[0] ?></td>
               <td scope="row"><?php echo $destination['wikiLink']; ?></td>
-              <td scope="row"><img height="60px" width="80px" src="<?php echo $destination['image'] ?>"></td>
+              <td scope="row"><img height="80px" width="130px" src="<?php echo $destination['image'] ?>"></td>
               <td scope="row" rowspan="2" colspan="3">
                 <a href="viewDestination.php?id=<?php echo $destination['id'] ?>&active=destination" class="btn btn-sm btn-outline-primary m-2">View</a>
                 <!-- <a class="btn btn-sm btn-outline-danger">Delete</a><br/><br/> -->

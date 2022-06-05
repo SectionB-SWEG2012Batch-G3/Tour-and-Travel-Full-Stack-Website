@@ -1,3 +1,12 @@
+<?php
+session_start();
+include_once '../dbconfig/connection.php';
+require_once '../partials/require_login.php';
+require_once '../partials/require_previlage_of.php';
+require_once '../partials/current_user.php';
+$role = require_loggedin();
+require_previlage_of($role, 'user');
+?>
 <!DOCTYPE html>
 <html lang="en">
 

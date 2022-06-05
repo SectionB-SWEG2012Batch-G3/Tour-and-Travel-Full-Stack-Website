@@ -82,7 +82,7 @@ if (isset($_GET['key'])) {
             <td scope="row"><?php echo $hotel['hotel_name'] ?></td>
             <td scope="row"><?php echo '$' . $hotel['min_price'] . ' - $' . $hotel['max_price'] ?></td>
             <td scope="row"><?php echo $hotel['rating'] . ' Star'; ?></td>
-            <td scope="row"><img src="<?php echo $hotel['image'] ?>" alt="<?php echo $hotel['region_name'] ?>"></td>
+            <td scope="row"><img src="<?php echo $hotel['image'] ?>" width="200px" height="130px" alt="<?php echo $hotel['region_name'] ?>"></td>
             <td scope="row">
               <a class="btn btn-sm btn-outline-primary m-2 px-3" href="editHotel.php?id=<?php echo $hotel['id'] ?>&active=hotel">Edit</a>
 

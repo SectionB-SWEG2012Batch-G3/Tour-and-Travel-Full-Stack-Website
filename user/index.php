@@ -1,14 +1,5 @@
 <?php
-session_start();
 include_once 'includes/header.php';
-include_once '../dbconfig/connection.php';
-require_once '../partials/require_login.php';
-require_once '../partials/require_previlage_of.php';
-require_once '../partials/current_user.php';
-$role = require_loggedin();
-require_previlage_of($role, 'user');
-
-
 $stmt = $pdo->prepare("SELECT * FROM assigned_tourguide WHERE email = :email ORDER BY start_date ");
 $username = current_user();
 $stmt->bindParam(':email', $username);
