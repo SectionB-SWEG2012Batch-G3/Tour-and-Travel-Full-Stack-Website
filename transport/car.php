@@ -30,6 +30,7 @@ try {
     <script defer src="../JS/search-boxScript.js"></script>
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
 </head>
 
 <body id="body">

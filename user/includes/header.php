@@ -10,7 +10,11 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- My CSS -->
+    <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../Admin/styles/style.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
+    <script defer src="../Admin/scripts/setProfile.js"></script>
+
     <style>
         .modal-body {
             color: #dc3545;
@@ -85,13 +89,43 @@
             </form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
-            <a href="#" class="notification">
+            <!-- <a href="#" class="notification">
                 <i class='bx bxs-bell'></i>
                 <span class="num">8</span>
             </a>
             <a href="#" class="profile">
                 <img src="../images/boat.jpg">
-            </a>
+            </a> -->
+            <?php
+            include_once '../partials/current_user.php';
+            include_once '../partials/find_by_username.php';
+            $username = current_user();
+            $user = find_by_username($username);
+            ?>
+            <?php if ($user['profile']) : ?>
+                <a href="#" title="Profile" class="profile">
+                    <img src=" <?php echo '../Admin/' . $user['profile'] ?? '' ?>" alt="">
+                </a>
+            <?php endif ?>
+            <?php if (!$user['profile']) : ?>
+                <a href="#" title="Profile" class="profile" style="border: 1px solid;line-height:28px; background-color:red;color:white; width:30px; height:30px; text-align:center; border-radius:50%; font-size:24px">
+                    <?php echo $_SESSION['username'][0] ?>
+                </a>
+            <?php endif ?>
+
+
+            <div class="upload-con hidden">
+                <div class="upload">
+                    <img src="<?php echo  $user['profile'] ? '../Admin/' . $user['profile'] : '../image.jpg' ?>" width="100" height="100" alt="" />
+                    <div class="round">
+                        <form method="POST" action="../Admin/profile.php" id="formP" enctype="multipart/form-data">
+                            <input type="file" name="profile" />
+                            <i class="fa fa-camera" style="color: #fff"></i>
+                        </form>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 mx-3" form="formP">Save</button>
+            </div>
         </nav>
         <!-- NAVBAR -->
 

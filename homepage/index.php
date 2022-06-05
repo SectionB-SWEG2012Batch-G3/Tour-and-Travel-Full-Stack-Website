@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/navStyle.css">
     <link rel="stylesheet" href="../css/footerCSS.css">
     <link rel="stylesheet" href="../css/HomepageCss2.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
     <!-- <link rel="stylesheet" href="homepage2.css"> -->
     <!-- <script defer src="../JS/search-boxScript.js"></script> -->
     <script defer src="../JS/home.js"></script>
@@ -28,8 +29,8 @@
             </video>
         </div>
         <h1>Recomended places to visit</h1>
-        <div class="alone-grid">
-            <?php if (!empty($destinations)) : ?>
+        <?php if (!empty($destinations)) : ?>
+            <div class="alone-grid">
                 <?php foreach ($destinations as $i => $destination) : ?>
                     <div class="alone-grid-item scrolle">
                         <div class="alone-card">
@@ -46,13 +47,12 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-            <?php endif ?>
-        </div>
+            </div>
+        <?php endif ?>
 
-        <h1 class="scrolle">Recomended Hotels</h1>
-
-        <div class="alone-grid">
-            <?php if (!empty($hotels)) : ?>
+        <?php if (!empty($hotels)) : ?>
+            <h1 class="scrolle">Recomended Hotels</h1>
+            <div class="alone-grid">
                 <?php foreach ($hotels as $i => $hotel) : ?>
                     <div class="alone-grid-item scrolle">
                         <div class="alone-card">
@@ -85,13 +85,14 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-            <?php endif ?>
-        </div>
+            </div>
+        <?php endif ?>
 
-        <h1>Choose Car</h1>
 
-        <div class="alone-grid">
-            <?php if (!empty($cars)) : ?>
+
+        <?php if (!empty($cars)) : ?>
+            <h1>Choose Car</h1>
+            <div class="alone-grid">
                 <?php foreach ($cars as $i => $car) : ?>
                     <?php
                     $stmt = $pdo->prepare("SELECT * FROM image WHERE imageFor = :id && description = :desc LIMIT 1");
@@ -115,8 +116,8 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-            <?php endif ?>
-        </div>
+            </div>
+        <?php endif ?>
 
         <h1>Unforgotable Experiences</h1>
 

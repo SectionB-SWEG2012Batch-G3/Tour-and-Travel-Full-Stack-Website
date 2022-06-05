@@ -1,4 +1,5 @@
   <?php
+    session_start();
     include_once '../dbconfig/connection.php';
     $stmt = $pdo->prepare("SELECT * FROM destination LIMIT 6");
     $stmt->execute();
@@ -34,11 +35,48 @@
                   </svg>
               </a>
           </div>
-          <div class="login-container">
-              <button class="blogs"><a href="Travel Blog/Tips.html">Travel Blogs</a></button>
-              <button class="login" style="width:100px;"><a href="http://localhost/Tour-and-Travel-Full-Stack-Website/user/log%20in.php">Log
-                      In</a></button>
-          </div>
+          <?php
+            require_once '../partials/is_loggedin.php';
+            require_once '../partials/find_by_username.php';
+            require_once '../partials/current_user.php';
+            ?>
+          <?php if (!is_loggedin()) : ?>
+              <div class="login-container">
+                  <button class="blogs"><a href="Travel Blog/Tips.html">Travel Blogs</a></button>
+                  <button class="login" style="width:100px;"><a href="http://localhost/Tour-and-Travel-Full-Stack-Website/user/log%20in.php">Log
+                          In</a></button>
+              </div>
+          <?php endif ?>
+          <?php if (is_loggedin()) : ?>
+              <?php
+                $user = find_by_username(current_user());
+                ?>
+              <?php if (!empty($user['profile'])) : ?>
+                  <!-- <a href="#" title="Profile" class="profile">
+                      <img src="../Admin/ <?php echo $user['profile'] ?? '' ?>" alt="">
+                  </a> -->
+                  <!-- <div class="login-container">
+                      <a href="#" title="Profile profile-pic-div" class="profile">
+                          <img src="../Admin/<?php echo $user['profile'] ?? '' ?>" alt="Profile">
+                      </a>
+                  </div> -->
+                  <div class="login-container">
+                      <div class="upload" title="Profile" style="width: 150px;margin: -23px -15px 0 0;cursor: pointer;">
+                          <a href="http://localhost/Tour-and-Travel-Full-Stack-Website/user/log%20in.php">
+                              <img src="../Admin/<?php echo $user['profile'] ?? '' ?>" width="60" height="60" alt="profile" />
+                          </a>
+                      </div>
+                  </div>
+              <?php endif ?>
+              <?php if (empty($user['profile'])) : ?>
+                  <!-- <a href="#" title="Profile" class="profile" style="border: 1px solid;line-height:28px; background-color:red;color:white; width:30px; height:30px; text-align:center; border-radius:50%; font-size:24px">
+                      <?php echo $_SESSION['username'][0] ?>
+                  </a> -->
+                  <a href="../user/log in.php" class="login-container" style="border: 1px solid;line-height:60px; background-color:red;color:white; width:70px; height:60px; text-align:center; border-radius:50%; font-size:40px;margin-right:50px;margin-top:-10px">
+                      <?php echo $_SESSION['username'][0] ?>
+                  </a>
+              <?php endif ?>
+          <?php endif ?>
           <div class="search-bar-container">
               <div class="input-container">
                   <input class="searchBar" type="Search" name="searchBar" value="" placeholder="Where to go... " list="ethiopia">

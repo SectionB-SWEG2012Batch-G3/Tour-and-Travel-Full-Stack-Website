@@ -2,15 +2,19 @@
 <html>
 
 <head>
-	<title>4HF Tour & Travels| <?php echo $regName ?></title>
+	<title>4HF Tour & Travels| <?php echo $_GET['name'] ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="places to visit in Addis ababa">
 	<meta name="keywords" content="entoto, unity park,sheger park, zoma museum">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" href="../css/footerCSS.css">
 	<link rel="stylesheet" href="../css/navStyle.css">
 	<link rel="stylesheet" href="../css/HomepageCss.css">
+	<link rel="stylesheet" href="../Admin/styles/css.css">
 	<!-- <link rel="stylesheet" href="css/hotelsCSS.css"> -->
 	<script defer src="../JS/NavScript.js"></script>
 	<script defer src="../JS/search-boxScript.js"></script>
@@ -22,7 +26,7 @@
 	<?php include_once 'partials/DB_for_destinaions.php' ?>
 	<main>
 
-		<h1><?php echo $regName ?></h1>
+		<h1><?php echo $destination['RegionName'] ?></h1>
 		<div class="slideContainer">
 
 			<div class="slider">
@@ -86,11 +90,9 @@
 			</p>
 		</div>
 
-
-
-		<h2 class="scroll">Places To Visit in <?php $places[0]['regionName'] ?? '' ?></h2>
-		<div class="alone-grid">
-			<?php if (!empty($places)) : ?>
+		<?php if (!empty($places)) : ?>
+			<h2 class="scroll">Places To Visit in <?php $places[0]['regionName'] ?? '' ?></h2>
+			<div class="alone-grid">
 				<?php foreach ($places as $i => $place) : ?>
 					<div class="alone-grid-item scroll">
 						<div class="alone-card">
@@ -113,17 +115,23 @@
 						</div>
 					</div>
 				<?php endforeach ?>
-			<?php endif ?>
-		</div>
+			</div>
+			<div class="iframe scroll">
+				<iframe src="<?php echo $places[0]['video'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</iframe>
+			</div>
+		<?php endif ?>
+		<?php if (empty($places)) : ?>
+			<h2 class="alert alert-primary scroll" style="text-align: center;margin:100px" role="alert">
+				No place to visit
+			</h2>
+		<?php endif ?>
 
 
-		<div class="iframe scroll">
-			<iframe src="<?php echo $places[0]['video'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</iframe>
-		</div>
-		<h3 class="scroll">Recommended Hotels</h3>
-		<div class="alone-grid">
-			<?php if (!empty($hotels)) : ?>
+
+		<?php if (!empty($hotels)) : ?>
+			<h3 class="scroll">Recommended Hotels</h3>
+			<div class="alone-grid">
 				<?php foreach ($hotels as $i => $hotel) : ?>
 					<div class="alone-grid-item scroll">
 						<div class="alone-card">
@@ -156,8 +164,8 @@
 						</div>
 					</div>
 				<?php endforeach ?>
-			<?php endif ?>
-		</div>
+			</div>
+		<?php endif ?>
 	</main>
 	<footer>
 		<div class="container scroll">

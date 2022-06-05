@@ -11,6 +11,7 @@
     <script defer src="http://localhost/Tour-and-Travel-Full-Stack-Website/tourguide/js/createTrip.js"></script>
     <script defer src="http://localhost/Tour-and-Travel-Full-Stack-Website/tourguide/js/tripDataValidation.js"></script>
     <link rel="stylesheet" href="http://localhost/Tour-and-Travel-Full-Stack-Website/tourguide/css/tripCSS.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
 </head>
 <style>
     body {

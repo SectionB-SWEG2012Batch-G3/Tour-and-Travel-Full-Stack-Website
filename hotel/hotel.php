@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.css">
   <link rel="stylesheet" type="text/css" href="css/style 1.css">
   <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="../Admin/styles/css.css">
   <script defer src="../JS/NavScript.js"></script>
   <script defer src="../JS/search-boxScript.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">

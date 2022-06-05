@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
     <!-- <link rel="stylesheet" href="css/scroll css.css"> -->
     <link rel="stylesheet" href="../css/HomepageCss.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
     <script defer src="js/hotel.js"> </script>
     <script defer src="../JS/NavScript.js"> </script>
     <script defer src="../JS/search-boxScript.js"> </script>

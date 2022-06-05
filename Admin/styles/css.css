@@ -1,0 +1,55 @@
+div.upload-con {
+    border: rgb(11, 10, 10);
+    margin-left: 50px;
+    height: 300px;
+    width: 150px;
+    background-color: rgb(7, 7, 7);
+    position: absolute;
+    top: 50px;
+    padding-top: 10px;
+    right: 10px;
+}
+
+.btn {
+    position: relative;
+    left: 25px;
+}
+
+.upload {
+    /* margin: 50px 20px 0 0; */
+    width: 100px;
+    position: relative;
+    left: 25px;
+}
+
+.upload img {
+    border-radius: 50%;
+    border: 6px solid #eaeaea;
+}
+
+.upload .round {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #00b4ff;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.upload .round input[type="file"] {
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+div.hidden {
+    display: none;
+}

@@ -2,27 +2,31 @@
 <html>
 
 <head>
-	<title>4HF Tour & Travels| <?php echo $place['title'] ?></title>
+	<title>4HF Tour & Travels| <?php echo $_GET['name'] ?? '' ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="What to know about Frienship(sheger) park?">
 	<meta name="keywords" content="friendship, sheger,Addis ababa, park">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/style2.css">
 	<link rel="stylesheet" href="../css/footerCSS.css">
 	<link rel="stylesheet" href="../css/navStyle.css">
 	<link rel="stylesheet" href="../css/HomepageCss.css">
+	<link rel="stylesheet" href="../Admin/styles/css.css">
 	<script defer src="../JS/NavScript.js"></script>
 	<script defer src="../JS/search-boxScript.js"></script>
 	<link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
 
 <body id="body">
+	<a href="http://hello world">hello Website</a>
 	<?php include_once '../partials/navbar.php' ?>
 	<?php include_once 'partials/DB_for_place.php' ?>
 	<main>
 		<h1><?php echo $place['title'] ?></h1>
 		<div class="slideContainer">
-
 			<div class="slider">
 				<?php if (!empty($images)) : ?>
 					<?php foreach ($images as $i => $image) : ?>
@@ -75,9 +79,10 @@
 			</div>
 		</div>
 
-		<h3 class="scroll">Recommended Hotels</h3>
-		<div class="alone-grid">
-			<?php if (!empty($hotels)) : ?>
+
+		<?php if (!empty($hotels)) : ?>
+			<h3 class="scroll">Recommended Hotels</h3>
+			<div class="alone-grid">
 				<?php foreach ($hotels as $i => $hotel) : ?>
 					<div class="alone-grid-item scroll">
 						<div class="alone-card">
@@ -110,8 +115,15 @@
 						</div>
 					</div>
 				<?php endforeach ?>
-			<?php endif ?>
-		</div>
+			</div>
+		<?php endif ?>
+
+		<?php if (empty($hotels)) : ?>
+			<div class="alert alert-primary" role="alert">
+				No Recomended Hotel is available
+			</div>
+		<?php endif ?>
+
 	</main>
 
 

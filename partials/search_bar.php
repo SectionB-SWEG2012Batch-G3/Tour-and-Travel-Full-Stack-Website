@@ -38,7 +38,6 @@
     var tempSearchValue = [];
 
     console.log(suggestions);
-
     inputBox.onkeyup = (event) => {
         let inputData = event.target.value;
         searchValueContainer = [];
@@ -92,11 +91,13 @@
 
     function showSuggestions(list) {
         let listdata;
+        // console.log(list);
         if (list.length) {
             listdata = list.join("");
         } else {
             listdata = `${inputBox.value}`;
         }
+        console.log(listdata);
         suggBox.innerHTML = listdata;
     }
 </script>

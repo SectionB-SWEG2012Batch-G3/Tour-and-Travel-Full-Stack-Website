@@ -39,7 +39,7 @@ $schedules = $stmt->fetchAll();
                 <tr>
                     <th scope="col" class="table-dark">#</th>
                     <th scope="col" class="table-dark">Start Date</th>
-                    <th scope="col" class="table-dark"></th>End Date</th>
+                    <th scope="col" class="table-dark">End Date</th>
                     <th scope="col" class="table-dark">Traveller Name</th>
                     <th scope="col" class="table-dark">Mobile Num.</th>
                     <th scope="col" class="table-dark">Email</th>

@@ -1,5 +1,5 @@
 <?php
-require_once 'current_user.php';
+require_once 'is_loggedin.php';
 function current_user()
 {
     if (is_loggedin()) {

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/scrollCSS.css">
+	<link rel="stylesheet" href="../Admin/styles/css.css">
 	<script defer src="../JS/search-boxScript.js"></script>
 </head>
 
@@ -72,8 +73,8 @@
 			</div>
 		</div>
 
-		<div class="alone-grid">
-			<?php if (!empty($destinations)) : ?>
+		<?php if (!empty($destinations)) : ?>
+			<div class="alone-grid">
 				<?php foreach ($destinations as $i => $destination) : ?>
 					<div class="alone-grid-item scroll">
 						<div class="alone-card">
@@ -90,8 +91,13 @@
 						</div>
 					</div>
 				<?php endforeach ?>
-			<?php endif ?>
-		</div>
+			</div>
+		<?php endif ?>
+		<?php if (empty($destinations)) : ?>
+			<div class="alert alert-primary" role="alert">
+				No Destination place
+			</div>
+		<?php endif ?>
 	</main>
 	<footer class="scroll">
 		<div class="container scroll">
