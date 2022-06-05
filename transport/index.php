@@ -14,6 +14,7 @@ include_once '../dbconfig/connection.php';
     <title>transport</title>
     <script defer src="../JS/search-boxScript.js"></script>
     <link rel="stylesheet" href="../css/HomepageCss.css">
+    <link rel="stylesheet" href="../Admin/styles/css.css">
     <!-- <link rel="stylesheet" href="css/scrollCSS.css"> -->
 
 </head>

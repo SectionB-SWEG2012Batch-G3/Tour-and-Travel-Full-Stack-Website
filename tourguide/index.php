@@ -19,6 +19,7 @@ $res = $stmt->fetchAll();
         <link rel="stylesheet" href="../css/footerCSS.css">
         <link rel="stylesheet" href="../css/navStyle.css">
         <link rel="stylesheet" href="../css/HomepageCss.css">
+        <link rel="stylesheet" href="../Admin/styles/css.css">
         <script defer src="../JS/NavScript.js"></script>
         <script defer src="js/js.js"></script>
         <script defer src="../JS/search-boxScript.js"></script>
