@@ -46,31 +46,31 @@ if (isset($_GET['key'])) {
     search_container.appendChild(select);
 </script>
 
-<table class="table">
-    <tdead>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Traveller Name</th>
-            <th scope="col">Mobile Num.</th>
-            <th scope="col">Email</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Car model</th>
+            <th scope="col" class="border border-3">#</th>
+            <th scope="col" class="border border-3">Start Date</th>
+            <th scope="col" class="border border-3">End Date</th>
+            <th scope="col" class="border border-3">Traveller Name</th>
+            <th scope="col" class="border border-3">Mobile Num.</th>
+            <th scope="col" class="border border-3">Email</th>
+            <th scope="col" class="border border-3">Destination</th>
+            <th scope="col" class="border border-3">Car model</th>
         </tr>
-    </tdead>
+    </thead>
     <tbody>
         <?php foreach ($schedules as $i => $schedule) : ?>
             <tr>
-                <td scope="row"><?php echo $i + 1 ?></td>
-                <td scope="row"><?php echo $schedule['start_date'] ?></td>
-                <td scope="row"><?php echo $schedule['end_date'] ?></td>
-                <td scope="row"><?php echo $schedule['traveller_name'] ?></td>
-                <td scope="row"><?php echo $schedule['phone'] ?></td>
-                <td scope="row"><?php echo $schedule['email'] ?></td>
-                <td scope="row"><?php echo $schedule['place'] ?></td>
-                <td scope="row"><?php echo $schedule['car_model'] ?></td>
-                <td scope="row">
+                <td scope="row" class="border-light border-3"><?php echo $i + 1 ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['start_date'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['end_date'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['traveller_name'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['phone'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['email'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['place'] ?></td>
+                <td scope="row" class="border-light border-3"><?php echo $schedule['car_model'] ?></td>
+                <td scope="row" class="border-light border-3">
 
                 </td>
             </tr>

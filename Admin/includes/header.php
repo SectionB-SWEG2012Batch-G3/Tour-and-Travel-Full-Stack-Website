@@ -23,6 +23,9 @@ $user = find_by_username($username);
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- My CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Gurmukhi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
     <link rel="stylesheet" href="styles/css.css">
@@ -30,6 +33,10 @@ $user = find_by_username($username);
     <style>
         .modal-body {
             color: #dc3545;
+        }
+
+        table {
+            font-family: 'Tiro Gurmukhi', 'serif';
         }
 
         form.form {
@@ -143,7 +150,9 @@ $user = find_by_username($username);
                 <a class="btn btn-success mx-3" style="color: white;" href="../homepage">Homepage</a>
             </div>
             <?php if ($user['profile']) : ?>
-                <a href="#" title="Profile" class="profile">
+                <a href="#" title="Profi
+                
+                le" class="profile">
                     <img src=" <?php echo $user['profile'] ?? '' ?>" alt="">
                 </a>
             <?php endif ?>

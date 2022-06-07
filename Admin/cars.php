@@ -62,30 +62,30 @@ if (isset($_GET['key'])) {
     </div>
   <?php endif ?>
   <?php if ($res) : ?>
-    <table class="table">
-      <tdead>
+    <table class="table table-hover">
+      <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Brand/Model</th>
-          <th scope="col">Category</th>
-          <th scope="col">Cost/Day</th>
-          <th scope="col">Descrition</th>
-          <th scope="col">Rating</th>
-          <th scope="col">Image</th>
-          <th scope="col">Action</th>
+          <th scope="col" class="border border-3">#</th>
+          <th scope="col" class="border border-3">Brand/Model</th>
+          <th scope="col" class="border border-3">Category</th>
+          <th scope="col" class="border border-3">Cost/Day</th>
+          <th scope="col" class="border border-3">Descrition</th>
+          <th scope="col" class="border border-3">Rating</th>
+          <th scope="col" class="border border-3">Image</th>
+          <th scope="col" class="border border-3">Action</th>
         </tr>
-      </tdead>
+      </thead>
       <tbody>
         <?php foreach ($res as $i => $car) : ?>
           <tr>
-            <td scope="row"><?php echo $i + 1 ?></td>
-            <td scope="row"><?php echo $car['modelName'] ?></td>
-            <td scope="row"><?php echo $car['category'] ?></td>
-            <td scope="row"><?php echo $car['price'] ?></td>
-            <td scope="row"><?php echo $car['description'] ?></td>
-            <td scope="row"><?php echo $car['rating'] ?></td>
-            <td scope="row"><?php  ?></td>
-            <td scope="row">
+            <td scope="row" class="border-light border-3"><?php echo $i + 1 ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $car['modelName'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $car['category'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $car['price'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $car['description'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $car['rating'] ?></td>
+            <td scope="row" class="border-light border-3"><?php  ?></td>
+            <td scope="row" class="border-light border-3">
               <a href="editCar.php?id=<?php echo $car['id'] ?>" class="btn btn-sm btn-outline-primary m-2">Edit</a>
 
               <button type="button" class="btn btn-sm btn-outline-danger m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $i ?>">

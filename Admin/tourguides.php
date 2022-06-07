@@ -75,34 +75,34 @@ if (isset($_GET['key'])) {
     </div>
   <?php endif ?>
   <?php if ($res) : ?>
-    <table class="table">
-      <tdead>
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">F Name</th>
-          <th scope="col">L Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Age</th>
-          <th scope="col">Qualification</th>
-          <th scope="col">Experience</th>
-          <th scope="col">Lang</th>
-          <th scope="col">Salary</th>
-          <th scope="col">Action</th>
+          <th scope="col" class="border border-3">#</th>
+          <th scope="col" class="border border-3">F Name</th>
+          <th scope="col" class="border border-3">L Name</th>
+          <th scope="col" class="border border-3">Email</th>
+          <th scope="col" class="border border-3">Age</th>
+          <th scope="col" class="border border-3">Qualification</th>
+          <th scope="col" class="border border-3">Experience</th>
+          <th scope="col" class="border border-3">Lang</th>
+          <th scope="col" class="border border-3">Salary</th>
+          <th scope="col" class="border border-3">Action</th>
         </tr>
-      </tdead>
+      </thead>
       <tbody>
         <?php foreach ($res as $i => $tourguide) : ?>
           <tr>
-            <td scope="row"><?php echo $i + 1 ?></td>
-            <td scope="row"><?php echo $tourguide['name'] ?></td>
-            <td scope="row"></td>
-            <td scope="row"><?php echo $tourguide['email'] ?></td>
-            <td scope="row"><?php echo $tourguide['age'] ?></td>
-            <td scope="row"><?php echo $tourguide['qualification'] ?></td>
-            <td scope="row"><?php echo $tourguide['experience'] ?></td>
-            <td scope="row"><?php echo $tourguide['lang'] ?></td>
-            <td scope="row"><?php echo $tourguide['salaryPerHour'] ?></td>
-            <td scope="row">
+            <td scope="row" class="border-light border-3"><?php echo $i + 1 ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['name'] ?></td>
+            <td scope="row" class="border-light border-3"></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['email'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['age'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['qualification'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['experience'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['lang'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $tourguide['salaryPerHour'] ?></td>
+            <td scope="row" class="border-light border-3">
               <!-- <a href = "deleteTourGuide.php?id=<?php echo $tourguide['id']; ?>" class="btn btn-sm btn-outline-danger">Delete</a> -->
               <button type="button" class="btn  btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $i ?>">
                 Delete

@@ -62,28 +62,28 @@ if (isset($_GET['key'])) {
     </div>
   <?php endif ?>
   <?php if ($hotels) : ?>
-    <table class="table">
-      <tdead>
+    <table class="table table-hover">
+      <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Region/city</th>
-          <th scope="col">Hotel Name</th>
-          <th scope="col">Cost range</th>
-          <th scope="col">Rating</th>
-          <th scope="col">Image</th>
-          <th scope="col">Action</th>
+          <th scope="col" class="border border-3">#</th>
+          <th scope="col" class="border border-3">Region/city</th>
+          <th scope="col" class="border border-3">Hotel Name</th>
+          <th scope="col" class="border border-3">Cost range</th>
+          <th scope="col" class="border border-3">Rating</th>
+          <th scope="col" class="border border-3">Image</th>
+          <th scope="col" class="border border-3">Action</th>
         </tr>
-      </tdead>
+      </thead>
       <tbody>
         <?php foreach ($hotels as $i => $hotel) : ?>
-          <tr>
-            <td scope="row"><?php echo $i + 1 ?></td>
-            <td scope="row"><?php echo $hotel['region_name'] ?></td>
-            <td scope="row"><?php echo $hotel['hotel_name'] ?></td>
-            <td scope="row"><?php echo '$' . $hotel['min_price'] . ' - $' . $hotel['max_price'] ?></td>
-            <td scope="row"><?php echo $hotel['rating'] . ' Star'; ?></td>
-            <td scope="row"><img src="<?php echo $hotel['image'] ?>" width="200px" height="130px" alt="<?php echo $hotel['region_name'] ?>"></td>
-            <td scope="row">
+          <tr class="table-success">
+            <td scope="row" class="border-light border-3"><?php echo $i + 1 ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $hotel['region_name'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $hotel['hotel_name'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo '$' . $hotel['min_price'] . ' - $' . $hotel['max_price'] ?></td>
+            <td scope="row" class="border-light border-3"><?php echo $hotel['rating'] . ' Star'; ?></td>
+            <td scope="row" class="border-light border-3"><img src="<?php echo $hotel['image'] ?>" width="200px" height="130px" alt="<?php echo $hotel['region_name'] ?>"></td>
+            <td scope="row" class="border-light border-3">
               <a class="btn btn-sm btn-outline-primary m-2 px-3" href="editHotel.php?id=<?php echo $hotel['id'] ?>&active=hotel">Edit</a>
 
               <button type="button" class="btn btn-sm btn-outline-danger m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $i ?>">

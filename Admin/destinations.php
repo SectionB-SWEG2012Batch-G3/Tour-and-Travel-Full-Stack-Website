@@ -30,27 +30,27 @@ if (isset($_GET['search'])) {
   </button>
   <?php if ($res) : ?>
     <div style="overflow-x: auto;">
-      <table class="table table-secondary">
-        <tdead>
+      <table class="table table-hover table-striped">
+        <thead class="table-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Region/City Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Wikipedia Link</th>
-            <th scope="col">Image</th>
-            <th scope="col">Action</th>
+            <th scope="col" class="border border-3">#</th>
+            <th scope="col" class="border border-3">Region/City Name</th>
+            <th scope="col" class="border border-3">Description</th>
+            <th scope="col" class="border border-3">Wikipedia Link</th>
+            <th scope="col" class="border border-3">Image</th>
+            <th scope="col" class="border border-3">Action</th>
           </tr>
-        </tdead>
+        </thead>
         <tbody>
           <?php foreach ($res as $i => $destination) : ?>
-            <tr>
-              <td scope="row"><?php echo $i + 1 ?></td>
-              <td scope="row"><?php echo $destination['RegionName'] ?></td>
+            <tr class="table-light">
+              <td scope="row" class="border-light border-3"><?php echo $i + 1 ?></td>
+              <td scope="row" class="border-light border-3"><?php echo $destination['RegionName'] ?></td>
 
-              <td scope="row"><?php echo explode('.', $destination['description'])[0] ?></td>
-              <td scope="row"><?php echo $destination['wikiLink']; ?></td>
-              <td scope="row"><img height="80px" width="130px" src="<?php echo $destination['image'] ?>"></td>
-              <td scope="row" rowspan="2" colspan="3">
+              <td scope="row" class="border-light border-3"><?php echo explode('.', $destination['description'])[0] ?></td>
+              <td scope="row" class="border-light border-3"><?php echo $destination['wikiLink']; ?></td>
+              <td scope="row" class="border-light border-3"><img height="80px" width="130px" src="<?php echo $destination['image'] ?>"></td>
+              <td scope="row" class="border-light border-3" rowspan="2" colspan="3">
                 <a href="viewDestination.php?id=<?php echo $destination['id'] ?>&active=destination" class="btn btn-sm btn-outline-primary m-2">View</a>
                 <!-- <a class="btn btn-sm btn-outline-danger">Delete</a><br/><br/> -->
                 <!-- Button trigger modal -->
