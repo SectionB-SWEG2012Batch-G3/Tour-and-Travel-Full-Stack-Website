@@ -37,6 +37,16 @@ if (isset($_GET['key'])) {
 </li>
 </ul>
 </div>
+<?php if ($hotels) : ?>
+  <div class="m-5 download">
+    <button class="btn btn-secondary">Export</button>
+    <ul class="hidden">
+      <li><a href="includes/export.php?ext=xlsx">Excel</a></li>
+      <li><a href="includes/export.php?ext=pdf">Pdf</a></li>
+    </ul>
+  </div>
+  <script src="scripts/download.js"></script>
+<?php endif ?>
 </div>
 
 <script>

@@ -1,0 +1,32 @@
+div.download {
+    float: right;
+    position: relative;
+}
+
+div.download ul.hidden {
+    margin-left: -5px;
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+div.download ul.hidden li a {
+    text-decoration: none;
+    color: white;
+}
+
+div.download ul.hidden li {
+    margin-top: 1px;
+    background-color: rgb(2, 136, 58);
+    color: white;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 70px;
+    line-height: 30px;
+    padding: 0 0 0 10px;
+    cursor: pointer;
+}
+
+div.download ul.hidden li:hover {
+    background-color: rgb(1, 158, 66);
+}

@@ -29,6 +29,7 @@ $user = find_by_username($username);
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.min.css">
     <link rel="stylesheet" href="styles/css.css">
+    <link rel="stylesheet" href="styles/download.css">
     <script defer src="scripts/setProfile.js"></script>
     <style>
         .modal-body {
@@ -150,9 +151,7 @@ $user = find_by_username($username);
                 <a class="btn btn-success mx-3" style="color: white;" href="../homepage">Homepage</a>
             </div>
             <?php if ($user['profile']) : ?>
-                <a href="#" title="Profi
-                
-                le" class="profile">
+                <a href="#" title="Profile" class="profile">
                     <img src=" <?php echo $user['profile'] ?? '' ?>" alt="">
                 </a>
             <?php endif ?>
