@@ -28,7 +28,9 @@
                 <source src="A Tour of Ethiopia's Amazing Landscapes.mp4" type="video/mp4">Your browser doesn't support the video
             </video>
         </div>
-        <h1>Recomended places to visit</h1>
+        <h1>Recomended places to visit
+            <i class="fa-solid fa-house-chimney" style="color: black"></i>
+        </h1>
         <?php if (!empty($destinations)) : ?>
             <div class="alone-grid">
                 <?php foreach ($destinations as $i => $destination) : ?>
@@ -163,7 +165,8 @@
     </footer>
     <div class="to-top">
         <a href="#body">
-            <i class="fas fa-chevron-up"></i>
+            <i class="fa-solid fa-chevron-up"></i>
+            <!-- <i class="fas fa-chevron-up"></i> -->
         </a>
     </div>
 
