@@ -1,13 +1,25 @@
 div.download {
+    display: inline;
+    width: 200px;
     float: right;
     position: relative;
+    margin-right: 50px;
 }
 
 div.download ul.hidden {
-    margin-left: -5px;
+    margin-top: 5px;
     display: none;
     position: absolute;
     z-index: 2;
+    padding: 0;
+}
+
+div.download .row .col:hover {
+    margin-bottom: 3px;
+}
+
+div.download .row {
+    gap: 20px;
 }
 
 div.download ul.hidden li a {
@@ -23,10 +35,14 @@ div.download ul.hidden li {
     border-radius: 5px;
     width: 70px;
     line-height: 30px;
-    padding: 0 0 0 10px;
+    padding: 0 10px 0 10px;
     cursor: pointer;
 }
 
 div.download ul.hidden li:hover {
     background-color: rgb(1, 158, 66);
+}
+
+.modal-content {
+    padding: 5px;
 }

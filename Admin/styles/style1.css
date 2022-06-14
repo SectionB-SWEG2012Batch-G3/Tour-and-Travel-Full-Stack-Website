@@ -165,11 +165,24 @@ body {
 }
 
 #sidebar .side-menu li a .bx,
-.fa-solid {
-    min-width: calc(60px - ((4px + 6px) * 2));
+.fa-solid,
+.fa-regular {
+    /* margin-left: 5px; */
+    font-weight: bold;
+    min-width: 60px;
+    height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-self: center;
 }
+
+
+/* 
+i.fa-solid {
+    width: 60px;
+    height: 40px;
+} */
 
 
 /* SIDEBAR */
@@ -221,8 +234,7 @@ body {
     color: var(--dark);
 }
 
-#content nav .bx.bx-menu,
-.fa-solid {
+#content nav .bx.bx-menu {
     cursor: pointer;
     color: var(--dark);
 }
@@ -408,8 +420,7 @@ body {
     grid-gap: 24px;
 }
 
-#content main .box-info li .bx,
-.fa-solid {
+#content main .box-info li .bx {
     width: 80px;
     height: 80px;
     border-radius: 10px;

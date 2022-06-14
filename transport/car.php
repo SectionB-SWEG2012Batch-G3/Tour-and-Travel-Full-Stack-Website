@@ -36,8 +36,6 @@ try {
 <body id="body">
     <?php include_once '../partials/navbar.php' ?>
     <main>
-
-
         <h1><?php echo $car['modelName'] ?></h1>
         <div class="slideContainer">
 

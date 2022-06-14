@@ -2,10 +2,10 @@ tourguide/Profiles/Videos
 tourguide/images
 Admin/uploads
 Admin/images
+Admin/imports/vendor
+Admin/imports/PHPExcel
+*.json
+*.lock
 fontawesome-free-5.15.4-web
 fontawesome-free-6.1.1-web
-note.txt
-
-
-
-
+*.txt

@@ -7,7 +7,7 @@ require_once "../../partials/SimpleXLSXGen.php";
 require_once "../../partials/SimpleXLSXGen.php";
 
 $data =  [
-    ['ID', 'Hotel Name', 'Minimum price', 'Maximum Price', 'Location', 'Rating']
+    ['ID', 'Hotel Name', 'Minimum price', 'Maximum Price', 'Location', 'Rating', 'Web Link']
 ];
 
 $sql  = "SELECT * FROM hotel";
@@ -16,7 +16,7 @@ $stmt->execute();
 $hotels = $stmt->fetchAll();
 
 foreach ($hotels as $hotel) {
-    $data[] = array($hotel['id'], $hotel['hotel_name'], $hotel['min_price'], $hotel['max_price'], $hotel['region_name'], $hotel['rating']);
+    $data[] = array($hotel['id'], $hotel['hotel_name'], $hotel['min_price'], $hotel['max_price'], $hotel['region_name'], $hotel['rating'], $hotel['link']);
 }
 
 $xlsx = SimpleXLSXGen::fromArray($data);

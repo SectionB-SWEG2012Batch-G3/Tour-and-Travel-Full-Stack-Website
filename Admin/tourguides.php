@@ -53,16 +53,47 @@ if (isset($_GET['key'])) {
 </li>
 </ul>
 </div>
-<?php if ($res) : ?>
-  <div class="m-5 download">
-    <button class="btn btn-secondary">Export</button>
-    <ul class="hidden">
-      <li><a href="exports/exportGuides.php">Excel</a></li>
-      <!-- <li><a href="exports/exportGuides.php">Pdf</a></li> -->
-    </ul>
+<div class="download container">
+  <div class="row">
+    <?php if ($res) : ?>
+      <div class="col export btn btn-secondary">
+        Export
+        <ul class="hidden">
+          <li><a href="exports/exportGuides.php">Excel</a></li>
+          <!-- <li><a href="includes/export.php?ext=pdf">Pdf</a></li> -->
+        </ul>
+      </div>
+    <?php endif ?>
+    <div class="col import btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Import
+      <ul class="hidden">
+        <!-- <li><a href="imports/importHotels.php">Excel</a></li> -->
+      </ul>
+    </div>
   </div>
-  <script src="scripts/download.js"></script>
-<?php endif ?>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import Excel Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" id="form-import" action="imports/importGuides.php" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="mb-3">
+            <input type="file" class="form-control" name='imported' id="imported">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="form-import" class="btn mx-3 btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="scripts/download1.js"></script>
 </div>
 
 <script>

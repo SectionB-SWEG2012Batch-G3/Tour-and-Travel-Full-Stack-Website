@@ -7,7 +7,7 @@ require_once "../../partials/SimpleXLSXGen.php";
 require_once "../../partials/SimpleXLSXGen.php";
 
 $data =  [
-    ['ID', 'First Name', 'Last Name', 'Email', 'Gender', 'Age', 'Qualification', 'Experience', 'Language', 'Service', 'Salary', 'Resume']
+    ['ID', 'First Name', 'Last Name', 'Email', 'Password', 'Gender', 'Age', 'Qualification', 'Experience', 'Language', 'Service', 'Salary', 'Resume']
 ];
 
 $sql  = "SELECT * FROM tourguide";
@@ -17,7 +17,7 @@ $guides = $stmt->fetchAll();
 
 foreach ($guides as $guide) {
     // array_merge($data, array(array($guide['id'], $guide['name'], $guide['lname'], $guide['email'], $guide['gender'], $guide['age'], $guide['qualification'], $guide['experience'], $guide['lang'], $guide['services'], $guide['salaryPerHour'], $guide['resume'])));
-    $data[] = array($guide['id'], $guide['name'], $guide['lname'], $guide['email'], $guide['gender'], $guide['age'], $guide['qualification'], $guide['experience'], $guide['lang'], $guide['services'], $guide['salaryPerHour'], $guide['resume']);
+    $data[] = array($guide['id'], $guide['name'], $guide['lname'], $guide['email'], '', $guide['gender'], $guide['age'], $guide['qualification'], $guide['experience'], $guide['lang'], $guide['services'], $guide['salaryPerHour'], $guide['resume']);
 }
 
 $xlsx = SimpleXLSXGen::fromArray($data);

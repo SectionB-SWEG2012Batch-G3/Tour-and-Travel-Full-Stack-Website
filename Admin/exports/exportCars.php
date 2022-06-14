@@ -10,7 +10,7 @@ $data =  [
     ['ID', 'Car Model', 'Category', 'Price', 'Description']
 ];
 
-$sql  = "SELECT * FROM tourguide";
+$sql  = "SELECT * FROM transport";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll();

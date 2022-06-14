@@ -25,20 +25,21 @@ $user = find_by_username($username);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Gurmukhi&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="../fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../../fontawesome-free-6.1.1-web/css/fontawesome.css">
     <link rel="stylesheet" href="styles/css.css">
-    <link rel="stylesheet" href="styles/download.css">
+    <link rel="stylesheet" href="styles/downloadCss.css">
+    <link rel="stylesheet" href="styles/style1.css">
     <script defer src="scripts/setProfile.js"></script>
     <style>
         .modal-body {
             color: #dc3545;
         }
 
-        table {
+        /* table {
             font-family: 'Tiro Gurmukhi', 'serif';
-        }
+        } */
 
         form.form {
             max-width: 500px;
@@ -65,46 +66,45 @@ $user = find_by_username($username);
             </li>
             <li class="">
                 <a href="#">
-                    <i class='bx bxs-shopping-bag-alt'></i>
-                    <!-- <i class="fa-solid fa-house-chimney"></i> -->
+                    <i class="fa-solid fa-house-chimney"></i>
                     <span class="text">Homepage</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'destination' ? 'active' : ''; ?>">
                 <a href="destinations.php?active=destination">
-                    <i class='bx bxs-doughnut-chart'></i>
+                    <i class="fa-solid fa-location-dot"></i>
                     <span class="text">Destinations</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'hotel' ? 'active' : ''; ?>">
                 <a href="hotels.php?active=hotel">
-                    <i class='bx bxs-message-dots'></i>
+                    <i class="fa-solid fa-hotel"></i>
                     <span class="text">Hotels</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'cars' ? 'active' : ''; ?>">
                 <a href="cars.php?active=cars">
-                    <i class='bx bxs-group'></i>
+                    <i class="fa-solid fa-car-side"></i>
                     <span class="text">Cars</span>
                 </a>
             </li>
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'tourguide' ? 'active' : ''; ?>">
                 <a href="tourguides.php?active=tourguide">
-                    <i class='bx bxs-group'></i>
+                    <i class="fa-solid fa-people-group"></i>
                     <span class="text">Tour Guides</span>
                 </a>
             </li>
 
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'MySchedule' ? 'active' : ''; ?>">
                 <a href="TourguideSchedule.php?active=MySchedule">
-                    <i class='bx bxs-group'></i>
+                    <i class='bx bxs-calendar'></i>
                     <span class="text">Tour Guide Schedule</span>
                 </a>
             </li>
 
             <li class="<?php echo isset($_GET['active']) && $_GET['active'] === 'reservedCars' ? 'active' : ''; ?>">
                 <a href="reservedCars.php?active=reservedCars">
-                    <i class='bx bxs-group'></i>
+                    <i class="fa-solid fa-bus-simple"></i>
                     <span class="text">Reserced Cars</span>
                 </a>
             </li>
